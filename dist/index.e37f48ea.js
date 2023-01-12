@@ -533,20 +533,14 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"aenu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _esRegexpFlagsJs = require("core-js/modules/es.regexp.flags.js"); // window.addEventListener('hashchange', controlRecipies)
- // window.addEventListener('load', controlRecipies)
+var _esRegexpFlagsJs = require("core-js/modules/es.regexp.flags.js");
 var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _modelJs = require("./model.js");
 var _recipeView = require("./views/recipeView");
 var _recipeViewDefault = parcelHelpers.interopDefault(_recipeView);
 var _runtime = require("regenerator-runtime/runtime");
-const timeout = function(s) {
-    return new Promise(function(_, reject) {
-        setTimeout(function() {
-            reject(new Error(`Request took too long! Timeout after ${s} second`));
-        }, s * 1000);
-    });
-};
+var _searchViewJs = require("./views/searchView.js");
+var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 const controlRecipies = async function() {
@@ -560,21 +554,31 @@ const controlRecipies = async function() {
         // Rendering recipe
         (0, _recipeViewDefault.default).render(_modelJs.state.recipe);
     } catch (err) {
-        console.error(err);
+        (0, _recipeViewDefault.default).renderError();
     }
 };
-const u = [
-    "hashchange",
-    "load"
-];
-u.forEach((ev)=>window.addEventListener(ev, controlRecipies));
+const controlSearchResults = async function() {
+    try {
+        const query = (0, _searchViewJsDefault.default).getQuery();
+        if (!query) return;
+        await _modelJs.loadSearchResults(query);
+        console.log(_modelJs.state.search.results);
+    } catch (err) {
+        console.log(err);
+    }
+};
+const init = function() {
+    (0, _recipeViewDefault.default).addHandlerRender(controlRecipies);
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
+};
+init();
 
-},{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/recipeView":"l60JC"}],"gSXXb":[function(require,module,exports) {
-var global = require("5ab56090731d7007");
-var DESCRIPTORS = require("b1ec947cf1289f63");
-var defineBuiltInAccessor = require("c714c1bdfdb4be63");
-var regExpFlags = require("cf90c3e9491b1749");
-var fails = require("7dbe94bee0fc2e14");
+},{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./views/recipeView":"l60JC","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchView.js":"9OQAM"}],"gSXXb":[function(require,module,exports) {
+var global = require("b16a9662cc515aae");
+var DESCRIPTORS = require("87a614b79294a110");
+var defineBuiltInAccessor = require("4f8c3b5b4fba67d5");
+var regExpFlags = require("c27ed290f579e356");
+var fails = require("e3939d5a31082219");
 // babel-minify and Closure Compiler transpiles RegExp('.', 'd') -> /./d and it causes SyntaxError
 var RegExp = global.RegExp;
 var RegExpPrototype = RegExp.prototype;
@@ -618,7 +622,7 @@ if (FORCED) defineBuiltInAccessor(RegExpPrototype, "flags", {
     get: regExpFlags
 });
 
-},{"5ab56090731d7007":"i8HOC","b1ec947cf1289f63":"92ZIi","c714c1bdfdb4be63":"592rH","cf90c3e9491b1749":"9bz1x","7dbe94bee0fc2e14":"hL6D2"}],"i8HOC":[function(require,module,exports) {
+},{"b16a9662cc515aae":"i8HOC","87a614b79294a110":"92ZIi","4f8c3b5b4fba67d5":"592rH","c27ed290f579e356":"9bz1x","e3939d5a31082219":"hL6D2"}],"i8HOC":[function(require,module,exports) {
 var global = arguments[3];
 var check = function(it) {
     return it && it.Math == Math && it;
@@ -632,7 +636,7 @@ function() {
 }() || Function("return this")();
 
 },{}],"92ZIi":[function(require,module,exports) {
-var fails = require("9a0ddfddf706db48");
+var fails = require("2a331e3c9c54cf0");
 // Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function() {
     // eslint-disable-next-line es/no-object-defineproperty -- required for testing
@@ -643,7 +647,7 @@ module.exports = !fails(function() {
     })[1] != 7;
 });
 
-},{"9a0ddfddf706db48":"hL6D2"}],"hL6D2":[function(require,module,exports) {
+},{"2a331e3c9c54cf0":"hL6D2"}],"hL6D2":[function(require,module,exports) {
 module.exports = function(exec) {
     try {
         return !!exec();
@@ -653,8 +657,8 @@ module.exports = function(exec) {
 };
 
 },{}],"592rH":[function(require,module,exports) {
-var makeBuiltIn = require("c8cbea6d06c9b82c");
-var defineProperty = require("14c57c69a8f83657");
+var makeBuiltIn = require("f318dcec82af3334");
+var defineProperty = require("cca581bd5c9a834e");
 module.exports = function(target, name, descriptor) {
     if (descriptor.get) makeBuiltIn(descriptor.get, name, {
         getter: true
@@ -665,14 +669,14 @@ module.exports = function(target, name, descriptor) {
     return defineProperty.f(target, name, descriptor);
 };
 
-},{"c8cbea6d06c9b82c":"cTB4k","14c57c69a8f83657":"iJR4w"}],"cTB4k":[function(require,module,exports) {
-var fails = require("f6cbe1c73fbd7f94");
-var isCallable = require("ce715596ce54c259");
-var hasOwn = require("316945c72cffb7db");
-var DESCRIPTORS = require("8e56e279fc61d232");
-var CONFIGURABLE_FUNCTION_NAME = require("1268780df5903ec7").CONFIGURABLE;
-var inspectSource = require("f8aa3aaf37256d3b");
-var InternalStateModule = require("757c753d7036c055");
+},{"f318dcec82af3334":"cTB4k","cca581bd5c9a834e":"iJR4w"}],"cTB4k":[function(require,module,exports) {
+var fails = require("c2094f6a01bdf492");
+var isCallable = require("4e3ad6e4fd3b6b43");
+var hasOwn = require("feb10a0cb7aafab9");
+var DESCRIPTORS = require("807bea8e10823fd4");
+var CONFIGURABLE_FUNCTION_NAME = require("f2f1c849dd407020").CONFIGURABLE;
+var inspectSource = require("d5a887ba32d6ef5e");
+var InternalStateModule = require("2b0a3f6861fc30fd");
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
@@ -714,8 +718,8 @@ Function.prototype.toString = makeBuiltIn(function toString() {
     return isCallable(this) && getInternalState(this).source || inspectSource(this);
 }, "toString");
 
-},{"f6cbe1c73fbd7f94":"hL6D2","ce715596ce54c259":"l3Kyn","316945c72cffb7db":"gC2Q5","8e56e279fc61d232":"92ZIi","1268780df5903ec7":"l6Kgd","f8aa3aaf37256d3b":"9jh7O","757c753d7036c055":"7AMlF"}],"l3Kyn":[function(require,module,exports) {
-var $documentAll = require("9019db252b7f0fe7");
+},{"c2094f6a01bdf492":"hL6D2","4e3ad6e4fd3b6b43":"l3Kyn","feb10a0cb7aafab9":"gC2Q5","807bea8e10823fd4":"92ZIi","f2f1c849dd407020":"l6Kgd","d5a887ba32d6ef5e":"9jh7O","2b0a3f6861fc30fd":"7AMlF"}],"l3Kyn":[function(require,module,exports) {
+var $documentAll = require("841d3ae51fea1a8");
 var documentAll = $documentAll.all;
 // `IsCallable` abstract operation
 // https://tc39.es/ecma262/#sec-iscallable
@@ -725,7 +729,7 @@ module.exports = $documentAll.IS_HTMLDDA ? function(argument) {
     return typeof argument == "function";
 };
 
-},{"9019db252b7f0fe7":"5MHqB"}],"5MHqB":[function(require,module,exports) {
+},{"841d3ae51fea1a8":"5MHqB"}],"5MHqB":[function(require,module,exports) {
 var documentAll = typeof document == "object" && document.all;
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
 // eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
@@ -736,8 +740,8 @@ module.exports = {
 };
 
 },{}],"gC2Q5":[function(require,module,exports) {
-var uncurryThis = require("2039bbd2e6bf737b");
-var toObject = require("81f57767913bf60a");
+var uncurryThis = require("8cd186f2cf626e1");
+var toObject = require("91f26e5dd84053dc");
 var hasOwnProperty = uncurryThis({}.hasOwnProperty);
 // `HasOwnProperty` abstract operation
 // https://tc39.es/ecma262/#sec-hasownproperty
@@ -746,8 +750,8 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
     return hasOwnProperty(toObject(it), key);
 };
 
-},{"2039bbd2e6bf737b":"7GlkT","81f57767913bf60a":"5cb35"}],"7GlkT":[function(require,module,exports) {
-var NATIVE_BIND = require("cd01a5800177b05a");
+},{"8cd186f2cf626e1":"7GlkT","91f26e5dd84053dc":"5cb35"}],"7GlkT":[function(require,module,exports) {
+var NATIVE_BIND = require("daf6e26e085189f6");
 var FunctionPrototype = Function.prototype;
 var call = FunctionPrototype.call;
 var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
@@ -757,8 +761,8 @@ module.exports = NATIVE_BIND ? uncurryThisWithBind : function(fn) {
     };
 };
 
-},{"cd01a5800177b05a":"i16Dq"}],"i16Dq":[function(require,module,exports) {
-var fails = require("202722539b981d06");
+},{"daf6e26e085189f6":"i16Dq"}],"i16Dq":[function(require,module,exports) {
+var fails = require("f9a27814af91d424");
 module.exports = !fails(function() {
     // eslint-disable-next-line es/no-function-prototype-bind -- safe
     var test = (function() {}).bind();
@@ -766,8 +770,8 @@ module.exports = !fails(function() {
     return typeof test != "function" || test.hasOwnProperty("prototype");
 });
 
-},{"202722539b981d06":"hL6D2"}],"5cb35":[function(require,module,exports) {
-var requireObjectCoercible = require("6e717fd3cc33896f");
+},{"f9a27814af91d424":"hL6D2"}],"5cb35":[function(require,module,exports) {
+var requireObjectCoercible = require("52a88b6cf6cfda9b");
 var $Object = Object;
 // `ToObject` abstract operation
 // https://tc39.es/ecma262/#sec-toobject
@@ -775,8 +779,8 @@ module.exports = function(argument) {
     return $Object(requireObjectCoercible(argument));
 };
 
-},{"6e717fd3cc33896f":"fOR0B"}],"fOR0B":[function(require,module,exports) {
-var isNullOrUndefined = require("cdf112387c63ed3c");
+},{"52a88b6cf6cfda9b":"fOR0B"}],"fOR0B":[function(require,module,exports) {
+var isNullOrUndefined = require("ba91d4abed2803b3");
 var $TypeError = TypeError;
 // `RequireObjectCoercible` abstract operation
 // https://tc39.es/ecma262/#sec-requireobjectcoercible
@@ -785,7 +789,7 @@ module.exports = function(it) {
     return it;
 };
 
-},{"cdf112387c63ed3c":"gM5ar"}],"gM5ar":[function(require,module,exports) {
+},{"ba91d4abed2803b3":"gM5ar"}],"gM5ar":[function(require,module,exports) {
 // we can't use just `it == null` since of `document.all` special case
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
 module.exports = function(it) {
@@ -793,8 +797,8 @@ module.exports = function(it) {
 };
 
 },{}],"l6Kgd":[function(require,module,exports) {
-var DESCRIPTORS = require("bf5dcc85cc50d93");
-var hasOwn = require("d65a67359419cc79");
+var DESCRIPTORS = require("1faf1a14c3228dbf");
+var hasOwn = require("7d1e9aca26d3742d");
 var FunctionPrototype = Function.prototype;
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
 var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
@@ -808,10 +812,10 @@ module.exports = {
     CONFIGURABLE: CONFIGURABLE
 };
 
-},{"bf5dcc85cc50d93":"92ZIi","d65a67359419cc79":"gC2Q5"}],"9jh7O":[function(require,module,exports) {
-var uncurryThis = require("6de37afebbca1c44");
-var isCallable = require("9aa8fe0922b353b");
-var store = require("666445a70b07b84a");
+},{"1faf1a14c3228dbf":"92ZIi","7d1e9aca26d3742d":"gC2Q5"}],"9jh7O":[function(require,module,exports) {
+var uncurryThis = require("b0794760ba17e49");
+var isCallable = require("1fba0d65e552d268");
+var store = require("b4b4acca32c84301");
 var functionToString = uncurryThis(Function.toString);
 // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
 if (!isCallable(store.inspectSource)) store.inspectSource = function(it) {
@@ -819,15 +823,15 @@ if (!isCallable(store.inspectSource)) store.inspectSource = function(it) {
 };
 module.exports = store.inspectSource;
 
-},{"6de37afebbca1c44":"7GlkT","9aa8fe0922b353b":"l3Kyn","666445a70b07b84a":"l4ncH"}],"l4ncH":[function(require,module,exports) {
-var global = require("77f83779c1974ff2");
-var defineGlobalProperty = require("9a5b37169ce09231");
+},{"b0794760ba17e49":"7GlkT","1fba0d65e552d268":"l3Kyn","b4b4acca32c84301":"l4ncH"}],"l4ncH":[function(require,module,exports) {
+var global = require("517a3400fdba87fd");
+var defineGlobalProperty = require("fd9a3a59ebf029e1");
 var SHARED = "__core-js_shared__";
 var store = global[SHARED] || defineGlobalProperty(SHARED, {});
 module.exports = store;
 
-},{"77f83779c1974ff2":"i8HOC","9a5b37169ce09231":"ggjnO"}],"ggjnO":[function(require,module,exports) {
-var global = require("ed8adc584127fb27");
+},{"517a3400fdba87fd":"i8HOC","fd9a3a59ebf029e1":"ggjnO"}],"ggjnO":[function(require,module,exports) {
+var global = require("3bda34df217795f3");
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
 module.exports = function(key, value) {
@@ -843,15 +847,15 @@ module.exports = function(key, value) {
     return value;
 };
 
-},{"ed8adc584127fb27":"i8HOC"}],"7AMlF":[function(require,module,exports) {
-var NATIVE_WEAK_MAP = require("2e240c6dfe3f8149");
-var global = require("1cc377c4b413f428");
-var isObject = require("e4312fa767f4f789");
-var createNonEnumerableProperty = require("5a0f229031a05fbc");
-var hasOwn = require("cd7248a4c2931ab7");
-var shared = require("22d1f278bd6530a8");
-var sharedKey = require("f889f3d623e3475");
-var hiddenKeys = require("2e8a8fe45759d7f4");
+},{"3bda34df217795f3":"i8HOC"}],"7AMlF":[function(require,module,exports) {
+var NATIVE_WEAK_MAP = require("f5c14f0b247e026e");
+var global = require("e645b0a65645be84");
+var isObject = require("b0b4395d202e1f33");
+var createNonEnumerableProperty = require("484df8d63aad3b90");
+var hasOwn = require("c8bd8df11d92dc70");
+var shared = require("5add4b2dae7e32e7");
+var sharedKey = require("3f7bafe0d043c519");
+var hiddenKeys = require("ad534a4cfb5e6f20");
 var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
 var TypeError = global.TypeError;
 var WeakMap = global.WeakMap;
@@ -907,15 +911,15 @@ module.exports = {
     getterFor: getterFor
 };
 
-},{"2e240c6dfe3f8149":"2PZTl","1cc377c4b413f428":"i8HOC","e4312fa767f4f789":"Z0pBo","5a0f229031a05fbc":"8CL42","cd7248a4c2931ab7":"gC2Q5","22d1f278bd6530a8":"l4ncH","f889f3d623e3475":"eAjGz","2e8a8fe45759d7f4":"661m4"}],"2PZTl":[function(require,module,exports) {
-var global = require("c09d2f2943c63467");
-var isCallable = require("306dbf808d5d99d7");
+},{"f5c14f0b247e026e":"2PZTl","e645b0a65645be84":"i8HOC","b0b4395d202e1f33":"Z0pBo","484df8d63aad3b90":"8CL42","c8bd8df11d92dc70":"gC2Q5","5add4b2dae7e32e7":"l4ncH","3f7bafe0d043c519":"eAjGz","ad534a4cfb5e6f20":"661m4"}],"2PZTl":[function(require,module,exports) {
+var global = require("695c120b80c868b0");
+var isCallable = require("3b9a7084baa7967c");
 var WeakMap = global.WeakMap;
 module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
 
-},{"c09d2f2943c63467":"i8HOC","306dbf808d5d99d7":"l3Kyn"}],"Z0pBo":[function(require,module,exports) {
-var isCallable = require("b5762d508ba15ff4");
-var $documentAll = require("3d663a14109efa1b");
+},{"695c120b80c868b0":"i8HOC","3b9a7084baa7967c":"l3Kyn"}],"Z0pBo":[function(require,module,exports) {
+var isCallable = require("fee1b089599c7ca2");
+var $documentAll = require("be15c02215509fe5");
 var documentAll = $documentAll.all;
 module.exports = $documentAll.IS_HTMLDDA ? function(it) {
     return typeof it == "object" ? it !== null : isCallable(it) || it === documentAll;
@@ -923,10 +927,10 @@ module.exports = $documentAll.IS_HTMLDDA ? function(it) {
     return typeof it == "object" ? it !== null : isCallable(it);
 };
 
-},{"b5762d508ba15ff4":"l3Kyn","3d663a14109efa1b":"5MHqB"}],"8CL42":[function(require,module,exports) {
-var DESCRIPTORS = require("e8ae2c996c4dc9f3");
-var definePropertyModule = require("8f3b324d6c3a7401");
-var createPropertyDescriptor = require("feeda7269ed17aeb");
+},{"fee1b089599c7ca2":"l3Kyn","be15c02215509fe5":"5MHqB"}],"8CL42":[function(require,module,exports) {
+var DESCRIPTORS = require("f0e01b31326345c3");
+var definePropertyModule = require("26274ab92423468a");
+var createPropertyDescriptor = require("154d6b324652a0d1");
 module.exports = DESCRIPTORS ? function(object, key, value) {
     return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
 } : function(object, key, value) {
@@ -934,12 +938,12 @@ module.exports = DESCRIPTORS ? function(object, key, value) {
     return object;
 };
 
-},{"e8ae2c996c4dc9f3":"92ZIi","8f3b324d6c3a7401":"iJR4w","feeda7269ed17aeb":"1lpav"}],"iJR4w":[function(require,module,exports) {
-var DESCRIPTORS = require("c0f69087ca2d8dca");
-var IE8_DOM_DEFINE = require("6419bcfddb60689e");
-var V8_PROTOTYPE_DEFINE_BUG = require("2e47a16b5f25ad77");
-var anObject = require("db82a4ca6b5fa405");
-var toPropertyKey = require("cfd7dff975f0fd67");
+},{"f0e01b31326345c3":"92ZIi","26274ab92423468a":"iJR4w","154d6b324652a0d1":"1lpav"}],"iJR4w":[function(require,module,exports) {
+var DESCRIPTORS = require("76817d3033a2ec7d");
+var IE8_DOM_DEFINE = require("cc2dbd243498c1f8");
+var V8_PROTOTYPE_DEFINE_BUG = require("afe1fcd7f46e6ee0");
+var anObject = require("74b264049c5bff2b");
+var toPropertyKey = require("5e6b6dfffee41272");
 var $TypeError = TypeError;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
@@ -978,10 +982,10 @@ exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P
     return O;
 };
 
-},{"c0f69087ca2d8dca":"92ZIi","6419bcfddb60689e":"qS9uN","2e47a16b5f25ad77":"ka1Un","db82a4ca6b5fa405":"4isCr","cfd7dff975f0fd67":"5XWKd"}],"qS9uN":[function(require,module,exports) {
-var DESCRIPTORS = require("ee29f384d77d846d");
-var fails = require("bac14907be0442d2");
-var createElement = require("b3fb4fd664b428c7");
+},{"76817d3033a2ec7d":"92ZIi","cc2dbd243498c1f8":"qS9uN","afe1fcd7f46e6ee0":"ka1Un","74b264049c5bff2b":"4isCr","5e6b6dfffee41272":"5XWKd"}],"qS9uN":[function(require,module,exports) {
+var DESCRIPTORS = require("65a896bcc8220ffe");
+var fails = require("410ee955415fd6b4");
+var createElement = require("b8d164f244d587df");
 // Thanks to IE8 for its funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function() {
     // eslint-disable-next-line es/no-object-defineproperty -- required for testing
@@ -992,9 +996,9 @@ module.exports = !DESCRIPTORS && !fails(function() {
     }).a != 7;
 });
 
-},{"ee29f384d77d846d":"92ZIi","bac14907be0442d2":"hL6D2","b3fb4fd664b428c7":"4bOHl"}],"4bOHl":[function(require,module,exports) {
-var global = require("1e82d73680aee689");
-var isObject = require("4cc8499d32a50c0");
+},{"65a896bcc8220ffe":"92ZIi","410ee955415fd6b4":"hL6D2","b8d164f244d587df":"4bOHl"}],"4bOHl":[function(require,module,exports) {
+var global = require("a4cf996218b871fc");
+var isObject = require("1d2fa8ea2072dcb5");
 var document = global.document;
 // typeof document.createElement is 'object' in old IE
 var EXISTS = isObject(document) && isObject(document.createElement);
@@ -1002,9 +1006,9 @@ module.exports = function(it) {
     return EXISTS ? document.createElement(it) : {};
 };
 
-},{"1e82d73680aee689":"i8HOC","4cc8499d32a50c0":"Z0pBo"}],"ka1Un":[function(require,module,exports) {
-var DESCRIPTORS = require("fd4f33b542c24ca8");
-var fails = require("f2a86c18fe441921");
+},{"a4cf996218b871fc":"i8HOC","1d2fa8ea2072dcb5":"Z0pBo"}],"ka1Un":[function(require,module,exports) {
+var DESCRIPTORS = require("7c71951190e734e9");
+var fails = require("7a4cbcd888a261ef");
 // V8 ~ Chrome 36-
 // https://bugs.chromium.org/p/v8/issues/detail?id=3334
 module.exports = DESCRIPTORS && fails(function() {
@@ -1015,8 +1019,8 @@ module.exports = DESCRIPTORS && fails(function() {
     }).prototype != 42;
 });
 
-},{"fd4f33b542c24ca8":"92ZIi","f2a86c18fe441921":"hL6D2"}],"4isCr":[function(require,module,exports) {
-var isObject = require("17e342c3ab961b7e");
+},{"7c71951190e734e9":"92ZIi","7a4cbcd888a261ef":"hL6D2"}],"4isCr":[function(require,module,exports) {
+var isObject = require("55f96fada5fc1677");
 var $String = String;
 var $TypeError = TypeError;
 // `Assert: Type(argument) is Object`
@@ -1025,9 +1029,9 @@ module.exports = function(argument) {
     throw $TypeError($String(argument) + " is not an object");
 };
 
-},{"17e342c3ab961b7e":"Z0pBo"}],"5XWKd":[function(require,module,exports) {
-var toPrimitive = require("db0c8515f6bc4725");
-var isSymbol = require("977d854e500706f2");
+},{"55f96fada5fc1677":"Z0pBo"}],"5XWKd":[function(require,module,exports) {
+var toPrimitive = require("3533263bd976de87");
+var isSymbol = require("e05e6c56a524d40f");
 // `ToPropertyKey` abstract operation
 // https://tc39.es/ecma262/#sec-topropertykey
 module.exports = function(argument) {
@@ -1035,13 +1039,13 @@ module.exports = function(argument) {
     return isSymbol(key) ? key : key + "";
 };
 
-},{"db0c8515f6bc4725":"a2mK1","977d854e500706f2":"4aV4F"}],"a2mK1":[function(require,module,exports) {
-var call = require("5227751b2e3ab8b8");
-var isObject = require("3a9e59447a57cf37");
-var isSymbol = require("a7452e16cf45f3e1");
-var getMethod = require("182d3ca6e78f52c4");
-var ordinaryToPrimitive = require("dfc860dc9d1f5df2");
-var wellKnownSymbol = require("ab0f169509947e07");
+},{"3533263bd976de87":"a2mK1","e05e6c56a524d40f":"4aV4F"}],"a2mK1":[function(require,module,exports) {
+var call = require("84d01335ec707560");
+var isObject = require("7ee577e1c8f954ae");
+var isSymbol = require("d1a95767bee5f57c");
+var getMethod = require("97512dd8763abb1e");
+var ordinaryToPrimitive = require("61d527db3a61fd0e");
+var wellKnownSymbol = require("e05f070db73e8992");
 var $TypeError = TypeError;
 var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
 // `ToPrimitive` abstract operation
@@ -1060,18 +1064,18 @@ module.exports = function(input, pref) {
     return ordinaryToPrimitive(input, pref);
 };
 
-},{"5227751b2e3ab8b8":"d7JlP","3a9e59447a57cf37":"Z0pBo","a7452e16cf45f3e1":"4aV4F","182d3ca6e78f52c4":"9Zfiw","dfc860dc9d1f5df2":"7MME2","ab0f169509947e07":"gTwyA"}],"d7JlP":[function(require,module,exports) {
-var NATIVE_BIND = require("c3c35060c4453aaf");
+},{"84d01335ec707560":"d7JlP","7ee577e1c8f954ae":"Z0pBo","d1a95767bee5f57c":"4aV4F","97512dd8763abb1e":"9Zfiw","61d527db3a61fd0e":"7MME2","e05f070db73e8992":"gTwyA"}],"d7JlP":[function(require,module,exports) {
+var NATIVE_BIND = require("346030894a204bd0");
 var call = Function.prototype.call;
 module.exports = NATIVE_BIND ? call.bind(call) : function() {
     return call.apply(call, arguments);
 };
 
-},{"c3c35060c4453aaf":"i16Dq"}],"4aV4F":[function(require,module,exports) {
-var getBuiltIn = require("81ea77c652da6f70");
-var isCallable = require("23c0f7627f7e47fe");
-var isPrototypeOf = require("ac9601c808714243");
-var USE_SYMBOL_AS_UID = require("165253c12ce080d3");
+},{"346030894a204bd0":"i16Dq"}],"4aV4F":[function(require,module,exports) {
+var getBuiltIn = require("4835b806f7efa127");
+var isCallable = require("6fdd68c999b49174");
+var isPrototypeOf = require("53b6b53bd6f89481");
+var USE_SYMBOL_AS_UID = require("19e91097f90c5f8a");
 var $Object = Object;
 module.exports = USE_SYMBOL_AS_UID ? function(it) {
     return typeof it == "symbol";
@@ -1080,9 +1084,9 @@ module.exports = USE_SYMBOL_AS_UID ? function(it) {
     return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
 };
 
-},{"81ea77c652da6f70":"6ZUSY","23c0f7627f7e47fe":"l3Kyn","ac9601c808714243":"3jtKQ","165253c12ce080d3":"2Ye8Q"}],"6ZUSY":[function(require,module,exports) {
-var global = require("114dcae41e2a67b5");
-var isCallable = require("6fd0ab0e6b215903");
+},{"4835b806f7efa127":"6ZUSY","6fdd68c999b49174":"l3Kyn","53b6b53bd6f89481":"3jtKQ","19e91097f90c5f8a":"2Ye8Q"}],"6ZUSY":[function(require,module,exports) {
+var global = require("18ab1c0b3127b03d");
+var isCallable = require("f46b0e87b9b1eb4e");
 var aFunction = function(argument) {
     return isCallable(argument) ? argument : undefined;
 };
@@ -1090,17 +1094,17 @@ module.exports = function(namespace, method) {
     return arguments.length < 2 ? aFunction(global[namespace]) : global[namespace] && global[namespace][method];
 };
 
-},{"114dcae41e2a67b5":"i8HOC","6fd0ab0e6b215903":"l3Kyn"}],"3jtKQ":[function(require,module,exports) {
-var uncurryThis = require("b476d9638aad6a0a");
+},{"18ab1c0b3127b03d":"i8HOC","f46b0e87b9b1eb4e":"l3Kyn"}],"3jtKQ":[function(require,module,exports) {
+var uncurryThis = require("edcf1ebfcc3862f1");
 module.exports = uncurryThis({}.isPrototypeOf);
 
-},{"b476d9638aad6a0a":"7GlkT"}],"2Ye8Q":[function(require,module,exports) {
-/* eslint-disable es/no-symbol -- required for testing */ var NATIVE_SYMBOL = require("afcbef433ae02133");
+},{"edcf1ebfcc3862f1":"7GlkT"}],"2Ye8Q":[function(require,module,exports) {
+/* eslint-disable es/no-symbol -- required for testing */ var NATIVE_SYMBOL = require("aee674ac67f2bc3d");
 module.exports = NATIVE_SYMBOL && !Symbol.sham && typeof Symbol.iterator == "symbol";
 
-},{"afcbef433ae02133":"8KyTD"}],"8KyTD":[function(require,module,exports) {
-/* eslint-disable es/no-symbol -- required for testing */ var V8_VERSION = require("452d2b9cd7676859");
-var fails = require("bc05edd2c90b057d");
+},{"aee674ac67f2bc3d":"8KyTD"}],"8KyTD":[function(require,module,exports) {
+/* eslint-disable es/no-symbol -- required for testing */ var V8_VERSION = require("c08f0dc9bf1414c7");
+var fails = require("85ce0d68a9493ff3");
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
 module.exports = !!Object.getOwnPropertySymbols && !fails(function() {
     var symbol = Symbol();
@@ -1110,9 +1114,9 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function() {
     !Symbol.sham && V8_VERSION && V8_VERSION < 41;
 });
 
-},{"452d2b9cd7676859":"bjFlO","bc05edd2c90b057d":"hL6D2"}],"bjFlO":[function(require,module,exports) {
-var global = require("b86db07590e38766");
-var userAgent = require("6dfc9b55ab02cf75");
+},{"c08f0dc9bf1414c7":"bjFlO","85ce0d68a9493ff3":"hL6D2"}],"bjFlO":[function(require,module,exports) {
+var global = require("f555d1560d7c52ff");
+var userAgent = require("ca0da6bddc995946");
 var process = global.process;
 var Deno = global.Deno;
 var versions = process && process.versions || Deno && Deno.version;
@@ -1135,13 +1139,13 @@ if (!version && userAgent) {
 }
 module.exports = version;
 
-},{"b86db07590e38766":"i8HOC","6dfc9b55ab02cf75":"73xBt"}],"73xBt":[function(require,module,exports) {
-var getBuiltIn = require("a236cfd6e0f691b");
+},{"f555d1560d7c52ff":"i8HOC","ca0da6bddc995946":"73xBt"}],"73xBt":[function(require,module,exports) {
+var getBuiltIn = require("4ff3501627d84f01");
 module.exports = getBuiltIn("navigator", "userAgent") || "";
 
-},{"a236cfd6e0f691b":"6ZUSY"}],"9Zfiw":[function(require,module,exports) {
-var aCallable = require("db82958e885210b3");
-var isNullOrUndefined = require("473ff7fbdbf565a");
+},{"4ff3501627d84f01":"6ZUSY"}],"9Zfiw":[function(require,module,exports) {
+var aCallable = require("c8a3fccb799a626a");
+var isNullOrUndefined = require("d634672d58f7b006");
 // `GetMethod` abstract operation
 // https://tc39.es/ecma262/#sec-getmethod
 module.exports = function(V, P) {
@@ -1149,9 +1153,9 @@ module.exports = function(V, P) {
     return isNullOrUndefined(func) ? undefined : aCallable(func);
 };
 
-},{"db82958e885210b3":"gOMir","473ff7fbdbf565a":"gM5ar"}],"gOMir":[function(require,module,exports) {
-var isCallable = require("4a528b8ac41fe7d1");
-var tryToString = require("1486570112631103");
+},{"c8a3fccb799a626a":"gOMir","d634672d58f7b006":"gM5ar"}],"gOMir":[function(require,module,exports) {
+var isCallable = require("548df507a6058616");
+var tryToString = require("d2221bfced5e2051");
 var $TypeError = TypeError;
 // `Assert: IsCallable(argument) is true`
 module.exports = function(argument) {
@@ -1159,7 +1163,7 @@ module.exports = function(argument) {
     throw $TypeError(tryToString(argument) + " is not a function");
 };
 
-},{"4a528b8ac41fe7d1":"l3Kyn","1486570112631103":"4O7d7"}],"4O7d7":[function(require,module,exports) {
+},{"548df507a6058616":"l3Kyn","d2221bfced5e2051":"4O7d7"}],"4O7d7":[function(require,module,exports) {
 var $String = String;
 module.exports = function(argument) {
     try {
@@ -1170,9 +1174,9 @@ module.exports = function(argument) {
 };
 
 },{}],"7MME2":[function(require,module,exports) {
-var call = require("9a7ed67a76214331");
-var isCallable = require("cea619b08ce052c5");
-var isObject = require("cd80cb74e13c3dac");
+var call = require("a49226bd4b983f3d");
+var isCallable = require("c903bfdef9c8b9f4");
+var isObject = require("9350c5821cbdd653");
 var $TypeError = TypeError;
 // `OrdinaryToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-ordinarytoprimitive
@@ -1184,13 +1188,13 @@ module.exports = function(input, pref) {
     throw $TypeError("Can't convert object to primitive value");
 };
 
-},{"9a7ed67a76214331":"d7JlP","cea619b08ce052c5":"l3Kyn","cd80cb74e13c3dac":"Z0pBo"}],"gTwyA":[function(require,module,exports) {
-var global = require("41b31f3f031b6c34");
-var shared = require("9a8110810e8e9d55");
-var hasOwn = require("4d583288abc38f3f");
-var uid = require("18c1dd426ac8ca51");
-var NATIVE_SYMBOL = require("345cec8459c5abe2");
-var USE_SYMBOL_AS_UID = require("e6ecab54e4276e89");
+},{"a49226bd4b983f3d":"d7JlP","c903bfdef9c8b9f4":"l3Kyn","9350c5821cbdd653":"Z0pBo"}],"gTwyA":[function(require,module,exports) {
+var global = require("8dc6da6ce459a486");
+var shared = require("49138a18d297ef98");
+var hasOwn = require("a2a8b30289424048");
+var uid = require("be86b0b2f81fdf18");
+var NATIVE_SYMBOL = require("e97b7a392267d0a2");
+var USE_SYMBOL_AS_UID = require("cc8c09e6f4f3669f");
 var WellKnownSymbolsStore = shared("wks");
 var Symbol = global.Symbol;
 var symbolFor = Symbol && Symbol["for"];
@@ -1205,9 +1209,9 @@ module.exports = function(name) {
     return WellKnownSymbolsStore[name];
 };
 
-},{"41b31f3f031b6c34":"i8HOC","9a8110810e8e9d55":"i1mHK","4d583288abc38f3f":"gC2Q5","18c1dd426ac8ca51":"a3SEE","345cec8459c5abe2":"8KyTD","e6ecab54e4276e89":"2Ye8Q"}],"i1mHK":[function(require,module,exports) {
-var IS_PURE = require("47052b740fe5635c");
-var store = require("3a0b7f251330a263");
+},{"8dc6da6ce459a486":"i8HOC","49138a18d297ef98":"i1mHK","a2a8b30289424048":"gC2Q5","be86b0b2f81fdf18":"a3SEE","e97b7a392267d0a2":"8KyTD","cc8c09e6f4f3669f":"2Ye8Q"}],"i1mHK":[function(require,module,exports) {
+var IS_PURE = require("3c5a4924d52b348f");
+var store = require("d957ab34e89d1307");
 (module.exports = function(key, value) {
     return store[key] || (store[key] = value !== undefined ? value : {});
 })("versions", []).push({
@@ -1218,11 +1222,11 @@ var store = require("3a0b7f251330a263");
     source: "https://github.com/zloirock/core-js"
 });
 
-},{"47052b740fe5635c":"5ZsyC","3a0b7f251330a263":"l4ncH"}],"5ZsyC":[function(require,module,exports) {
+},{"3c5a4924d52b348f":"5ZsyC","d957ab34e89d1307":"l4ncH"}],"5ZsyC":[function(require,module,exports) {
 module.exports = false;
 
 },{}],"a3SEE":[function(require,module,exports) {
-var uncurryThis = require("7fa64e7de337920e");
+var uncurryThis = require("aa20bbb7f884e4a4");
 var id = 0;
 var postfix = Math.random();
 var toString = uncurryThis(1.0.toString);
@@ -1230,7 +1234,7 @@ module.exports = function(key) {
     return "Symbol(" + (key === undefined ? "" : key) + ")_" + toString(++id + postfix, 36);
 };
 
-},{"7fa64e7de337920e":"7GlkT"}],"1lpav":[function(require,module,exports) {
+},{"aa20bbb7f884e4a4":"7GlkT"}],"1lpav":[function(require,module,exports) {
 module.exports = function(bitmap, value) {
     return {
         enumerable: !(bitmap & 1),
@@ -1241,19 +1245,19 @@ module.exports = function(bitmap, value) {
 };
 
 },{}],"eAjGz":[function(require,module,exports) {
-var shared = require("65949b71afe7de5");
-var uid = require("f72ad6ccd7bfbae3");
+var shared = require("64783c20ec7be93f");
+var uid = require("752c49e0d60c46a");
 var keys = shared("keys");
 module.exports = function(key) {
     return keys[key] || (keys[key] = uid(key));
 };
 
-},{"65949b71afe7de5":"i1mHK","f72ad6ccd7bfbae3":"a3SEE"}],"661m4":[function(require,module,exports) {
+},{"64783c20ec7be93f":"i1mHK","752c49e0d60c46a":"a3SEE"}],"661m4":[function(require,module,exports) {
 module.exports = {};
 
 },{}],"9bz1x":[function(require,module,exports) {
 "use strict";
-var anObject = require("af9a7de8169045db");
+var anObject = require("2b13fc5f343f3285");
 // `RegExp.prototype.flags` getter implementation
 // https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 module.exports = function() {
@@ -1270,15 +1274,15 @@ module.exports = function() {
     return result;
 };
 
-},{"af9a7de8169045db":"4isCr"}],"49tUX":[function(require,module,exports) {
+},{"2b13fc5f343f3285":"4isCr"}],"49tUX":[function(require,module,exports) {
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
-require("3de701206c3d6ea6");
-require("2fe750dc7ebdf018");
+require("888ef90d2906c7e1");
+require("1140fe53f23edf53");
 
-},{"3de701206c3d6ea6":"fOGFr","2fe750dc7ebdf018":"l7FDS"}],"fOGFr":[function(require,module,exports) {
-var $ = require("448c8c96aaa1f1a");
-var global = require("e3d80eb545f4acfa");
-var clearImmediate = require("570c224d893c185d").clear;
+},{"888ef90d2906c7e1":"fOGFr","1140fe53f23edf53":"l7FDS"}],"fOGFr":[function(require,module,exports) {
+var $ = require("a2ab7182da918550");
+var global = require("5012750e25a8f61c");
+var clearImmediate = require("506e2cb445fd7cd3").clear;
 // `clearImmediate` method
 // http://w3c.github.io/setImmediate/#si-clearImmediate
 $({
@@ -1290,14 +1294,14 @@ $({
     clearImmediate: clearImmediate
 });
 
-},{"448c8c96aaa1f1a":"dIGt4","e3d80eb545f4acfa":"i8HOC","570c224d893c185d":"7jDg7"}],"dIGt4":[function(require,module,exports) {
-var global = require("7dde91db5f219acf");
-var getOwnPropertyDescriptor = require("c373c1fcb37c7709").f;
-var createNonEnumerableProperty = require("d7968a6b86aa010");
-var defineBuiltIn = require("8aec54cea07a5c81");
-var defineGlobalProperty = require("a3a8ab177ceba777");
-var copyConstructorProperties = require("b2efd04bf5808807");
-var isForced = require("8e886f2024bda1b");
+},{"a2ab7182da918550":"dIGt4","5012750e25a8f61c":"i8HOC","506e2cb445fd7cd3":"7jDg7"}],"dIGt4":[function(require,module,exports) {
+var global = require("e4d979984782cdda");
+var getOwnPropertyDescriptor = require("a0db9a203e1b907b").f;
+var createNonEnumerableProperty = require("bee26d99fa27f062");
+var defineBuiltIn = require("656d4dc0355aad07");
+var defineGlobalProperty = require("160629606fa56012");
+var copyConstructorProperties = require("655ab0642f4f03b9");
+var isForced = require("2f777f7a15b52f1f");
 /*
   options.target         - name of the target object
   options.global         - target is the global object
@@ -1338,15 +1342,15 @@ var isForced = require("8e886f2024bda1b");
     }
 };
 
-},{"7dde91db5f219acf":"i8HOC","c373c1fcb37c7709":"lk5NI","d7968a6b86aa010":"8CL42","8aec54cea07a5c81":"6XwEX","a3a8ab177ceba777":"ggjnO","b2efd04bf5808807":"9Z12i","8e886f2024bda1b":"6uTCZ"}],"lk5NI":[function(require,module,exports) {
-var DESCRIPTORS = require("e6586a48b8f1e772");
-var call = require("63725dc6e6bf01e6");
-var propertyIsEnumerableModule = require("ce212accff3c4709");
-var createPropertyDescriptor = require("b0654bc7c943b409");
-var toIndexedObject = require("d24a8622e9585b72");
-var toPropertyKey = require("885266f49ec8c4fc");
-var hasOwn = require("7ad835f9c10d1088");
-var IE8_DOM_DEFINE = require("677e5133fc81d5e0");
+},{"e4d979984782cdda":"i8HOC","a0db9a203e1b907b":"lk5NI","bee26d99fa27f062":"8CL42","656d4dc0355aad07":"6XwEX","160629606fa56012":"ggjnO","655ab0642f4f03b9":"9Z12i","2f777f7a15b52f1f":"6uTCZ"}],"lk5NI":[function(require,module,exports) {
+var DESCRIPTORS = require("be57737857292797");
+var call = require("281f3ee674f0e380");
+var propertyIsEnumerableModule = require("61a18d198342e3d1");
+var createPropertyDescriptor = require("9fd740ea66ed87fe");
+var toIndexedObject = require("76cec9d22503ad02");
+var toPropertyKey = require("9d93dac0abd68f64");
+var hasOwn = require("bd190c2d004b3d1c");
+var IE8_DOM_DEFINE = require("8e617dcc6a9cbabb");
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
 var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 // `Object.getOwnPropertyDescriptor` method
@@ -1360,7 +1364,7 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
     if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
 };
 
-},{"e6586a48b8f1e772":"92ZIi","63725dc6e6bf01e6":"d7JlP","ce212accff3c4709":"7SuiS","b0654bc7c943b409":"1lpav","d24a8622e9585b72":"jLWwQ","885266f49ec8c4fc":"5XWKd","7ad835f9c10d1088":"gC2Q5","677e5133fc81d5e0":"qS9uN"}],"7SuiS":[function(require,module,exports) {
+},{"be57737857292797":"92ZIi","281f3ee674f0e380":"d7JlP","61a18d198342e3d1":"7SuiS","9fd740ea66ed87fe":"1lpav","76cec9d22503ad02":"jLWwQ","9d93dac0abd68f64":"5XWKd","bd190c2d004b3d1c":"gC2Q5","8e617dcc6a9cbabb":"qS9uN"}],"7SuiS":[function(require,module,exports) {
 "use strict";
 var $propertyIsEnumerable = {}.propertyIsEnumerable;
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -1378,16 +1382,16 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 },{}],"jLWwQ":[function(require,module,exports) {
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = require("355c2139333a03b0");
-var requireObjectCoercible = require("9c8b64a5bc22221b");
+var IndexedObject = require("a087dee3a52bbdbc");
+var requireObjectCoercible = require("876fbfc04857fd7b");
 module.exports = function(it) {
     return IndexedObject(requireObjectCoercible(it));
 };
 
-},{"355c2139333a03b0":"kPk5h","9c8b64a5bc22221b":"fOR0B"}],"kPk5h":[function(require,module,exports) {
-var uncurryThis = require("199cc3077925e75f");
-var fails = require("878e7d184196908");
-var classof = require("6669900f9917657d");
+},{"a087dee3a52bbdbc":"kPk5h","876fbfc04857fd7b":"fOR0B"}],"kPk5h":[function(require,module,exports) {
+var uncurryThis = require("e359768554879c44");
+var fails = require("516bc5102d71ea81");
+var classof = require("ce40ab6b5504d7bf");
 var $Object = Object;
 var split = uncurryThis("".split);
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -1399,19 +1403,19 @@ module.exports = fails(function() {
     return classof(it) == "String" ? split(it, "") : $Object(it);
 } : $Object;
 
-},{"199cc3077925e75f":"7GlkT","878e7d184196908":"hL6D2","6669900f9917657d":"bdfmm"}],"bdfmm":[function(require,module,exports) {
-var uncurryThis = require("3604295449baba1f");
+},{"e359768554879c44":"7GlkT","516bc5102d71ea81":"hL6D2","ce40ab6b5504d7bf":"bdfmm"}],"bdfmm":[function(require,module,exports) {
+var uncurryThis = require("d40792b602607948");
 var toString = uncurryThis({}.toString);
 var stringSlice = uncurryThis("".slice);
 module.exports = function(it) {
     return stringSlice(toString(it), 8, -1);
 };
 
-},{"3604295449baba1f":"7GlkT"}],"6XwEX":[function(require,module,exports) {
-var isCallable = require("af7e5233ca65ab86");
-var definePropertyModule = require("639154ac791599ba");
-var makeBuiltIn = require("a0a6985b69b7e9db");
-var defineGlobalProperty = require("de4fe5aa2caa11ef");
+},{"d40792b602607948":"7GlkT"}],"6XwEX":[function(require,module,exports) {
+var isCallable = require("52dffc34b06d7fff");
+var definePropertyModule = require("2389e1f56ca9e01f");
+var makeBuiltIn = require("13481fb1d15049db");
+var defineGlobalProperty = require("d0f0de089d3d0d5");
 module.exports = function(O, key, value, options) {
     if (!options) options = {};
     var simple = options.enumerable;
@@ -1436,11 +1440,11 @@ module.exports = function(O, key, value, options) {
     return O;
 };
 
-},{"af7e5233ca65ab86":"l3Kyn","639154ac791599ba":"iJR4w","a0a6985b69b7e9db":"cTB4k","de4fe5aa2caa11ef":"ggjnO"}],"9Z12i":[function(require,module,exports) {
-var hasOwn = require("f1a95eb8eabc8a4f");
-var ownKeys = require("7f443df8477bb3e5");
-var getOwnPropertyDescriptorModule = require("d2cb7629a0b49530");
-var definePropertyModule = require("79300906b95fa70c");
+},{"52dffc34b06d7fff":"l3Kyn","2389e1f56ca9e01f":"iJR4w","13481fb1d15049db":"cTB4k","d0f0de089d3d0d5":"ggjnO"}],"9Z12i":[function(require,module,exports) {
+var hasOwn = require("3d91e0fa3a776910");
+var ownKeys = require("e0ad19aea8d9ebaa");
+var getOwnPropertyDescriptorModule = require("b78b91bf43a1c01a");
+var definePropertyModule = require("f5e63570b347f1a4");
 module.exports = function(target, source, exceptions) {
     var keys = ownKeys(source);
     var defineProperty = definePropertyModule.f;
@@ -1451,12 +1455,12 @@ module.exports = function(target, source, exceptions) {
     }
 };
 
-},{"f1a95eb8eabc8a4f":"gC2Q5","7f443df8477bb3e5":"1CX1A","d2cb7629a0b49530":"lk5NI","79300906b95fa70c":"iJR4w"}],"1CX1A":[function(require,module,exports) {
-var getBuiltIn = require("4fad8b13bb4d2b18");
-var uncurryThis = require("e126a1450f66c771");
-var getOwnPropertyNamesModule = require("fd255ac1e3441061");
-var getOwnPropertySymbolsModule = require("b90782ddd8b43f01");
-var anObject = require("97f2156748961616");
+},{"3d91e0fa3a776910":"gC2Q5","e0ad19aea8d9ebaa":"1CX1A","b78b91bf43a1c01a":"lk5NI","f5e63570b347f1a4":"iJR4w"}],"1CX1A":[function(require,module,exports) {
+var getBuiltIn = require("23dfb230b2bd7401");
+var uncurryThis = require("710707db9c1cd6db");
+var getOwnPropertyNamesModule = require("fc3edb1b9e284d6c");
+var getOwnPropertySymbolsModule = require("1f49ccdb04bbbcac");
+var anObject = require("d44900d7a10781ae");
 var concat = uncurryThis([].concat);
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
@@ -1465,9 +1469,9 @@ module.exports = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
     return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
 };
 
-},{"4fad8b13bb4d2b18":"6ZUSY","e126a1450f66c771":"7GlkT","fd255ac1e3441061":"fjY04","b90782ddd8b43f01":"4DWO3","97f2156748961616":"4isCr"}],"fjY04":[function(require,module,exports) {
-var internalObjectKeys = require("fff7dedcaca7f13d");
-var enumBugKeys = require("ee9d1f459770fd2c");
+},{"23dfb230b2bd7401":"6ZUSY","710707db9c1cd6db":"7GlkT","fc3edb1b9e284d6c":"fjY04","1f49ccdb04bbbcac":"4DWO3","d44900d7a10781ae":"4isCr"}],"fjY04":[function(require,module,exports) {
+var internalObjectKeys = require("9b07016794f3bcfd");
+var enumBugKeys = require("8b1da6c27280e3c8");
 var hiddenKeys = enumBugKeys.concat("length", "prototype");
 // `Object.getOwnPropertyNames` method
 // https://tc39.es/ecma262/#sec-object.getownpropertynames
@@ -1476,12 +1480,12 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     return internalObjectKeys(O, hiddenKeys);
 };
 
-},{"fff7dedcaca7f13d":"hl5T1","ee9d1f459770fd2c":"9RnJm"}],"hl5T1":[function(require,module,exports) {
-var uncurryThis = require("dda2270389ff1eb3");
-var hasOwn = require("aa11e9efa0b4781b");
-var toIndexedObject = require("b74b89daa304d68a");
-var indexOf = require("fd5d146c5f853423").indexOf;
-var hiddenKeys = require("750dc5b283ecf578");
+},{"9b07016794f3bcfd":"hl5T1","8b1da6c27280e3c8":"9RnJm"}],"hl5T1":[function(require,module,exports) {
+var uncurryThis = require("ab2995d3b027f50");
+var hasOwn = require("5fb0380ced00caba");
+var toIndexedObject = require("6fe46f1f4dca7b0e");
+var indexOf = require("7d2e02afc4d79457").indexOf;
+var hiddenKeys = require("c7eebe13c3f02133");
 var push = uncurryThis([].push);
 module.exports = function(object, names) {
     var O = toIndexedObject(object);
@@ -1494,10 +1498,10 @@ module.exports = function(object, names) {
     return result;
 };
 
-},{"dda2270389ff1eb3":"7GlkT","aa11e9efa0b4781b":"gC2Q5","b74b89daa304d68a":"jLWwQ","fd5d146c5f853423":"n5IsC","750dc5b283ecf578":"661m4"}],"n5IsC":[function(require,module,exports) {
-var toIndexedObject = require("3cb6443a25f74fac");
-var toAbsoluteIndex = require("f38147aeb3cd0e9");
-var lengthOfArrayLike = require("9e1f25d027da52bf");
+},{"ab2995d3b027f50":"7GlkT","5fb0380ced00caba":"gC2Q5","6fe46f1f4dca7b0e":"jLWwQ","7d2e02afc4d79457":"n5IsC","c7eebe13c3f02133":"661m4"}],"n5IsC":[function(require,module,exports) {
+var toIndexedObject = require("bdcd06e06eb5ca65");
+var toAbsoluteIndex = require("cefc561deb150f7c");
+var lengthOfArrayLike = require("d4bfbfbf664949e");
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function(IS_INCLUDES) {
     return function($this, el, fromIndex) {
@@ -1528,8 +1532,8 @@ module.exports = {
     indexOf: createMethod(false)
 };
 
-},{"3cb6443a25f74fac":"jLWwQ","f38147aeb3cd0e9":"5yh27","9e1f25d027da52bf":"lY4mS"}],"5yh27":[function(require,module,exports) {
-var toIntegerOrInfinity = require("baa2d4a602c57e01");
+},{"bdcd06e06eb5ca65":"jLWwQ","cefc561deb150f7c":"5yh27","d4bfbfbf664949e":"lY4mS"}],"5yh27":[function(require,module,exports) {
+var toIntegerOrInfinity = require("fd3e725de789fb40");
 var max = Math.max;
 var min = Math.min;
 // Helper for a popular repeating case of the spec:
@@ -1540,8 +1544,8 @@ module.exports = function(index, length) {
     return integer < 0 ? max(integer + length, 0) : min(integer, length);
 };
 
-},{"baa2d4a602c57e01":"kLXGe"}],"kLXGe":[function(require,module,exports) {
-var trunc = require("1aea1e15eba2a4c5");
+},{"fd3e725de789fb40":"kLXGe"}],"kLXGe":[function(require,module,exports) {
+var trunc = require("a1d8864f5a074c77");
 // `ToIntegerOrInfinity` abstract operation
 // https://tc39.es/ecma262/#sec-tointegerorinfinity
 module.exports = function(argument) {
@@ -1550,7 +1554,7 @@ module.exports = function(argument) {
     return number !== number || number === 0 ? 0 : trunc(number);
 };
 
-},{"1aea1e15eba2a4c5":"7O8gb"}],"7O8gb":[function(require,module,exports) {
+},{"a1d8864f5a074c77":"7O8gb"}],"7O8gb":[function(require,module,exports) {
 var ceil = Math.ceil;
 var floor = Math.floor;
 // `Math.trunc` method
@@ -1562,15 +1566,15 @@ module.exports = Math.trunc || function trunc(x) {
 };
 
 },{}],"lY4mS":[function(require,module,exports) {
-var toLength = require("eff4e006cfc96d33");
+var toLength = require("fdbda8dafd65574");
 // `LengthOfArrayLike` abstract operation
 // https://tc39.es/ecma262/#sec-lengthofarraylike
 module.exports = function(obj) {
     return toLength(obj.length);
 };
 
-},{"eff4e006cfc96d33":"fU04N"}],"fU04N":[function(require,module,exports) {
-var toIntegerOrInfinity = require("2fc6e1778d20bbea");
+},{"fdbda8dafd65574":"fU04N"}],"fU04N":[function(require,module,exports) {
+var toIntegerOrInfinity = require("2c4184328c191b05");
 var min = Math.min;
 // `ToLength` abstract operation
 // https://tc39.es/ecma262/#sec-tolength
@@ -1578,7 +1582,7 @@ module.exports = function(argument) {
     return argument > 0 ? min(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
 
-},{"2fc6e1778d20bbea":"kLXGe"}],"9RnJm":[function(require,module,exports) {
+},{"2c4184328c191b05":"kLXGe"}],"9RnJm":[function(require,module,exports) {
 // IE8- don't enum bug keys
 module.exports = [
     "constructor",
@@ -1595,8 +1599,8 @@ module.exports = [
 exports.f = Object.getOwnPropertySymbols;
 
 },{}],"6uTCZ":[function(require,module,exports) {
-var fails = require("22b5565465d9d7e1");
-var isCallable = require("70d7300f8069a58c");
+var fails = require("48fe09f5c2b4f281");
+var isCallable = require("b3a629bff67f6610");
 var replacement = /#|\.prototype\./;
 var isForced = function(feature, detection) {
     var value = data[normalize(feature)];
@@ -1610,19 +1614,19 @@ var NATIVE = isForced.NATIVE = "N";
 var POLYFILL = isForced.POLYFILL = "P";
 module.exports = isForced;
 
-},{"22b5565465d9d7e1":"hL6D2","70d7300f8069a58c":"l3Kyn"}],"7jDg7":[function(require,module,exports) {
-var global = require("70ef309a1953e7c7");
-var apply = require("c338e23bb7e6e49f");
-var bind = require("cd3d7dfdf2913511");
-var isCallable = require("e4df1a680a505b0d");
-var hasOwn = require("c4edfde46c051070");
-var fails = require("912a11e208a9e0ef");
-var html = require("76404d31d3bcaa43");
-var arraySlice = require("803af86cbd5e2e5d");
-var createElement = require("d17b9fa2c85ab7d1");
-var validateArgumentsLength = require("996f5168a4c0212a");
-var IS_IOS = require("3067e45565a70513");
-var IS_NODE = require("95a9c066ceca7099");
+},{"48fe09f5c2b4f281":"hL6D2","b3a629bff67f6610":"l3Kyn"}],"7jDg7":[function(require,module,exports) {
+var global = require("25242a76b651d0ac");
+var apply = require("6f6096b8cff566b4");
+var bind = require("29b582266878937c");
+var isCallable = require("c1fdce68bc4b5540");
+var hasOwn = require("a7b0c231016f9879");
+var fails = require("291e39ceff484a46");
+var html = require("3e56b73f0faee710");
+var arraySlice = require("cc77bc94b0f24d45");
+var createElement = require("5ab487c1d7c0b4e1");
+var validateArgumentsLength = require("ad5d393222ceb464");
+var IS_IOS = require("34a762660d541992");
+var IS_NODE = require("91ade1de308781fb");
 var set = global.setImmediate;
 var clear = global.clearImmediate;
 var process = global.process;
@@ -1705,8 +1709,8 @@ module.exports = {
     clear: clear
 };
 
-},{"70ef309a1953e7c7":"i8HOC","c338e23bb7e6e49f":"148ka","cd3d7dfdf2913511":"7vpmS","e4df1a680a505b0d":"l3Kyn","c4edfde46c051070":"gC2Q5","912a11e208a9e0ef":"hL6D2","76404d31d3bcaa43":"2pze4","803af86cbd5e2e5d":"RsFXo","d17b9fa2c85ab7d1":"4bOHl","996f5168a4c0212a":"b9O3D","3067e45565a70513":"bzGah","95a9c066ceca7099":"2Jcp4"}],"148ka":[function(require,module,exports) {
-var NATIVE_BIND = require("ab5c5b34694e4453");
+},{"25242a76b651d0ac":"i8HOC","6f6096b8cff566b4":"148ka","29b582266878937c":"7vpmS","c1fdce68bc4b5540":"l3Kyn","a7b0c231016f9879":"gC2Q5","291e39ceff484a46":"hL6D2","3e56b73f0faee710":"2pze4","cc77bc94b0f24d45":"RsFXo","5ab487c1d7c0b4e1":"4bOHl","ad5d393222ceb464":"b9O3D","34a762660d541992":"bzGah","91ade1de308781fb":"2Jcp4"}],"148ka":[function(require,module,exports) {
+var NATIVE_BIND = require("6a2c2626a288d66c");
 var FunctionPrototype = Function.prototype;
 var apply = FunctionPrototype.apply;
 var call = FunctionPrototype.call;
@@ -1715,10 +1719,10 @@ module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? c
     return call.apply(apply, arguments);
 });
 
-},{"ab5c5b34694e4453":"i16Dq"}],"7vpmS":[function(require,module,exports) {
-var uncurryThis = require("be822f6228e4a5b6");
-var aCallable = require("c8428e149faea0a0");
-var NATIVE_BIND = require("c608471247712487");
+},{"6a2c2626a288d66c":"i16Dq"}],"7vpmS":[function(require,module,exports) {
+var uncurryThis = require("9b51db1e3f2d9fb");
+var aCallable = require("5f1efb8b56208d23");
+var NATIVE_BIND = require("6246cdf36054855");
 var bind = uncurryThis(uncurryThis.bind);
 // optional / simple context binding
 module.exports = function(fn, that) {
@@ -1728,9 +1732,9 @@ module.exports = function(fn, that) {
     };
 };
 
-},{"be822f6228e4a5b6":"5Hioa","c8428e149faea0a0":"gOMir","c608471247712487":"i16Dq"}],"5Hioa":[function(require,module,exports) {
-var classofRaw = require("3d2c21a3ec2a21a4");
-var uncurryThis = require("aeeade8ed6b3a43d");
+},{"9b51db1e3f2d9fb":"5Hioa","5f1efb8b56208d23":"gOMir","6246cdf36054855":"i16Dq"}],"5Hioa":[function(require,module,exports) {
+var classofRaw = require("762e2f00f597909f");
+var uncurryThis = require("a210c1ffdc16c9e");
 module.exports = function(fn) {
     // Nashorn bug:
     //   https://github.com/zloirock/core-js/issues/1128
@@ -1738,15 +1742,15 @@ module.exports = function(fn) {
     if (classofRaw(fn) === "Function") return uncurryThis(fn);
 };
 
-},{"3d2c21a3ec2a21a4":"bdfmm","aeeade8ed6b3a43d":"7GlkT"}],"2pze4":[function(require,module,exports) {
-var getBuiltIn = require("c98215ca62a27d7f");
+},{"762e2f00f597909f":"bdfmm","a210c1ffdc16c9e":"7GlkT"}],"2pze4":[function(require,module,exports) {
+var getBuiltIn = require("5f98c70c7c8b9472");
 module.exports = getBuiltIn("document", "documentElement");
 
-},{"c98215ca62a27d7f":"6ZUSY"}],"RsFXo":[function(require,module,exports) {
-var uncurryThis = require("c10f6fd0d0ee3521");
+},{"5f98c70c7c8b9472":"6ZUSY"}],"RsFXo":[function(require,module,exports) {
+var uncurryThis = require("44f2c13f26d46356");
 module.exports = uncurryThis([].slice);
 
-},{"c10f6fd0d0ee3521":"7GlkT"}],"b9O3D":[function(require,module,exports) {
+},{"44f2c13f26d46356":"7GlkT"}],"b9O3D":[function(require,module,exports) {
 var $TypeError = TypeError;
 module.exports = function(passed, required) {
     if (passed < required) throw $TypeError("Not enough arguments");
@@ -1754,19 +1758,19 @@ module.exports = function(passed, required) {
 };
 
 },{}],"bzGah":[function(require,module,exports) {
-var userAgent = require("3ad768dadf9fdf25");
+var userAgent = require("dd44082bb82843b");
 module.exports = /(?:ipad|iphone|ipod).*applewebkit/i.test(userAgent);
 
-},{"3ad768dadf9fdf25":"73xBt"}],"2Jcp4":[function(require,module,exports) {
-var classof = require("f89546452c9a6b97");
-var global = require("2ee92c924d875041");
+},{"dd44082bb82843b":"73xBt"}],"2Jcp4":[function(require,module,exports) {
+var classof = require("2341d40b2304238f");
+var global = require("a15b639b9b89e0a7");
 module.exports = classof(global.process) == "process";
 
-},{"f89546452c9a6b97":"bdfmm","2ee92c924d875041":"i8HOC"}],"l7FDS":[function(require,module,exports) {
-var $ = require("f87ca31f1ef7eb41");
-var global = require("8c1c56898d286fe1");
-var setTask = require("50e6b83efa77bbfa").set;
-var schedulersFix = require("125cd8b91ed529f7");
+},{"2341d40b2304238f":"bdfmm","a15b639b9b89e0a7":"i8HOC"}],"l7FDS":[function(require,module,exports) {
+var $ = require("c7a073d99254ebcf");
+var global = require("c430a59b1c3d42c1");
+var setTask = require("f6556ddf268e5256").set;
+var schedulersFix = require("351c8c23bcc5b3af");
 // https://github.com/oven-sh/bun/issues/1633
 var setImmediate = global.setImmediate ? schedulersFix(setTask, false) : setTask;
 // `setImmediate` method
@@ -1780,15 +1784,15 @@ $({
     setImmediate: setImmediate
 });
 
-},{"f87ca31f1ef7eb41":"dIGt4","8c1c56898d286fe1":"i8HOC","50e6b83efa77bbfa":"7jDg7","125cd8b91ed529f7":"cAPb6"}],"cAPb6":[function(require,module,exports) {
+},{"c7a073d99254ebcf":"dIGt4","c430a59b1c3d42c1":"i8HOC","f6556ddf268e5256":"7jDg7","351c8c23bcc5b3af":"cAPb6"}],"cAPb6":[function(require,module,exports) {
 "use strict";
-var global = require("941e5d5506cb4199");
-var apply = require("cf52288cbf7c9439");
-var isCallable = require("fd335b39eeba312c");
-var ENGINE_IS_BUN = require("615987431bb15698");
-var USER_AGENT = require("787d015195efaf40");
-var arraySlice = require("58444b85edbb2582");
-var validateArgumentsLength = require("f29cfa824c8b826c");
+var global = require("131707784fe388a8");
+var apply = require("d85f4e16a2f00463");
+var isCallable = require("291f96db56ef54aa");
+var ENGINE_IS_BUN = require("c4dbed75fd4a9bc");
+var USER_AGENT = require("54b76947bb688e70");
+var arraySlice = require("9760cc1e0affa5fa");
+var validateArgumentsLength = require("fe535461e27c93e4");
 var Function = global.Function;
 // dirty IE9- and Bun 0.3.0- checks
 var WRAP = /MSIE .\./.test(USER_AGENT) || ENGINE_IS_BUN && function() {
@@ -1811,7 +1815,7 @@ module.exports = function(scheduler, hasTimeArg) {
     } : scheduler;
 };
 
-},{"941e5d5506cb4199":"i8HOC","cf52288cbf7c9439":"148ka","fd335b39eeba312c":"l3Kyn","615987431bb15698":"2BA6V","787d015195efaf40":"73xBt","58444b85edbb2582":"RsFXo","f29cfa824c8b826c":"b9O3D"}],"2BA6V":[function(require,module,exports) {
+},{"131707784fe388a8":"i8HOC","d85f4e16a2f00463":"148ka","291f96db56ef54aa":"l3Kyn","c4dbed75fd4a9bc":"2BA6V","54b76947bb688e70":"73xBt","9760cc1e0affa5fa":"RsFXo","fe535461e27c93e4":"b9O3D"}],"2BA6V":[function(require,module,exports) {
 /* global Bun -- Deno case */ module.exports = typeof Bun == "function" && Bun && typeof Bun.version == "string";
 
 },{}],"Y4A21":[function(require,module,exports) {
@@ -1819,16 +1823,20 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
+var _config = require("./config");
+var _helpers = require("./helpers");
 const state = {
-    recipe: {}
+    recipe: {},
+    search: {
+        query: "",
+        results: []
+    }
 };
 const loadRecipe = async function(id) {
     try {
-        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=21f69c26-359d-4bec-b6ee-39e668f1d708`);
-        const data = await res.json();
-        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-        console.log(res);
-        console.log(data);
+        // ?key=21f69c26-359d-4bec-b6ee-39e668f1d708
+        const data = await (0, _helpers.getJSON)(`${(0, _config.API_URL)}${id}`);
         const { recipe  } = data.data;
         state.recipe = {
             id: recipe.id,
@@ -1842,9 +1850,37 @@ const loadRecipe = async function(id) {
         };
         console.log(state.recipe);
     } catch (err) {
-        console.error(err);
+        console.error(`${err}🤦‍♀️🤦‍♂️🐱‍🐉`);
+        throw err;
     }
 };
+const loadSearchResults = async function(query) {
+    try {
+        state.search.query = query;
+        const data = await (0, _helpers.getJSON)(`${(0, _config.API_URL)}?search=${query}`);
+        console.log(data);
+        state.search.results = data.data.recipes.map((rec)=>{
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url
+            };
+        });
+    } catch (err) {
+        console.error(`${err} 😒🤷‍♀️🐱‍👤🤢`);
+        throw err;
+    }
+};
+loadSearchResults("pizza");
+
+},{"./config":"k5Hzs","./helpers":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k5Hzs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "API_URL", ()=>API_URL);
+parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
+const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes/";
+const TIMEOUT_SEC = 10;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -1875,6 +1911,482 @@ exports.export = function(dest, destName, get) {
         get: get
     });
 };
+
+},{}],"hGI1E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+var _config = require("./config");
+const timeout = function(s) {
+    return new Promise(function(_, reject) {
+        setTimeout(function() {
+            reject(new Error(`Request took too long! Timeout after ${s} second`));
+        }, s * 1000);
+    });
+};
+const getJSON = async function(url) {
+    try {
+        const fetchPro = fetch(url);
+        const res = await Promise.race([
+            fetchPro,
+            timeout((0, _config.TIMEOUT_SEC))
+        ]);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        return data;
+    } catch (err) {
+        throw err;
+    }
+};
+
+},{"./config":"k5Hzs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l60JC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+var _fractional = require("fractional");
+class RecipeView {
+    #parentElement = document.querySelector(".recipe");
+    #data;
+    #errorMessage = "Not found, Please search another recipe";
+    #message = "";
+    render(data) {
+        this.data = data;
+        console.log(this.data);
+        const markup = this.#generateMarkup();
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    #clear() {
+        this.#parentElement.innerHTML = "";
+    }
+    renderSpinner() {
+        const markup = `
+        <div class="spinner">
+      <svg>
+        <use href="${(0, _iconsSvgDefault.default)}#icon-loader"></use>
+      </svg>
+      </div> 
+      `;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderError(message = this.#errorMessage) {
+        const markup = `
+          <div class="error">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+      `;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderError(message = this.#message) {
+        const markup = `
+          <div class="message">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+      `;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    addHandlerRender(handler) {
+        const u = [
+            "hashchange",
+            "load"
+        ];
+        u.forEach((ev)=>window.addEventListener(ev, handler));
+    }
+    #generateMarkup() {
+        return `
+        <figure class="recipe__fig">
+                  <img src="${this.data.image}" alt="${this.data.title}" class="recipe__img" />
+                  <h1 class="recipe__title">
+                    <span>${this.data.title}</span>
+                  </h1>
+                </figure>
+        
+                <div class="recipe__details">
+                  <div class="recipe__info">
+                    <svg class="recipe__info-icon">
+                      <use href="${0, _iconsSvgDefault.default}#icon-clock"></use>
+                    </svg>
+                    <span class="recipe__info-data recipe__info-data--minutes">${this.data.cookingTime}</span>
+                    <span class="recipe__info-text">minutes</span>
+                  </div>
+                  <div class="recipe__info">
+                    <svg class="recipe__info-icon">
+                      <use href="${0, _iconsSvgDefault.default}#icon-users"></use>
+                    </svg>
+                    <span class="recipe__info-data recipe__info-data--people">${this.data.servings}</span>
+                    <span class="recipe__info-text">servings</span>
+        
+                    <div class="recipe__info-buttons">
+                      <button class="btn--tiny btn--increase-servings">
+                        <svg>
+                          <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
+                        </svg>
+                      </button>
+                      <button class="btn--tiny btn--increase-servings">
+                        <svg>
+                          <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+        
+                  <div class="recipe__user-generated">
+                    <svg>
+                      <use href="${0, _iconsSvgDefault.default}#icon-user"></use>
+                    </svg>
+                  </div>
+                  <button class="btn--round">
+                    <svg class="">
+                      <use href="${0, _iconsSvgDefault.default}#icon-bookmark-fill"></use>
+                    </svg>
+                  </button>
+                </div>
+        
+                <div class="recipe__ingredients">
+                  <h2 class="heading--2">Recipe ingredients</h2>
+                  <ul class="recipe__ingredient-list">
+                  ${this.data.ingredients.map(this.#geranteMarkupIngredient).join("")}
+                      </ul>
+                </div>
+        
+                <div class="recipe__directions">
+                  <h2 class="heading--2">How to cook it</h2>
+                  <p class="recipe__directions-text">
+                    This recipe was carefully designed and tested by
+                    <span class="recipe__publisher">${this.data.publisher}</span>. Please check out
+                    directions at their website.
+                  </p>
+                  <a
+                    class="btn--small recipe__btn"
+                    href="${this.data.sourceUrl}"
+                    target="_blank"
+                  >
+                    <span>Directions</span>
+                    <svg class="search__icon">
+                      <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+                    </svg>
+                  </a>
+                </div>`;
+    }
+    #geranteMarkupIngredient(ing) {
+        return `
+              <li class="recipe__ingredient">
+                   <svg class="recipe__icon">
+                    <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
+                    </svg>
+                     <div class="recipe__quantity">${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ""}</div>
+                     <div class="recipe__description">
+                      <span class="recipe__unit">${ing.unit}</span>
+                       ${ing.description}
+                      </div>
+                    </li> `;
+    }
+}
+exports.default = new RecipeView();
+
+},{"url:../../img/icons.svg":"loVOp","fractional":"3SU56","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"loVOp":[function(require,module,exports) {
+module.exports = require("1b5f45ae8de34ac4").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
+
+},{"1b5f45ae8de34ac4":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"3SU56":[function(require,module,exports) {
+/*
+fraction.js
+A Javascript fraction library.
+
+Copyright (c) 2009  Erik Garrison <erik@hypervolu.me>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/ /* Fractions */ /* 
+ *
+ * Fraction objects are comprised of a numerator and a denomenator.  These
+ * values can be accessed at fraction.numerator and fraction.denomenator.
+ *
+ * Fractions are always returned and stored in lowest-form normalized format.
+ * This is accomplished via Fraction.normalize.
+ *
+ * The following mathematical operations on fractions are supported:
+ *
+ * Fraction.equals
+ * Fraction.add
+ * Fraction.subtract
+ * Fraction.multiply
+ * Fraction.divide
+ *
+ * These operations accept both numbers and fraction objects.  (Best results
+ * are guaranteed when the input is a fraction object.)  They all return a new
+ * Fraction object.
+ *
+ * Usage:
+ *
+ * TODO
+ *
+ */ /*
+ * The Fraction constructor takes one of:
+ *   an explicit numerator (integer) and denominator (integer),
+ *   a string representation of the fraction (string),
+ *   or a floating-point number (float)
+ *
+ * These initialization methods are provided for convenience.  Because of
+ * rounding issues the best results will be given when the fraction is
+ * constructed from an explicit integer numerator and denomenator, and not a
+ * decimal number.
+ *
+ *
+ * e.g. new Fraction(1, 2) --> 1/2
+ *      new Fraction('1/2') --> 1/2
+ *      new Fraction('2 3/4') --> 11/4  (prints as 2 3/4)
+ *
+ */ Fraction = function(numerator, denominator) {
+    /* double argument invocation */ if (typeof numerator !== "undefined" && denominator) {
+        if (typeof numerator === "number" && typeof denominator === "number") {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        } else if (typeof numerator === "string" && typeof denominator === "string") {
+            // what are they?
+            // hmm....
+            // assume they are ints?
+            this.numerator = parseInt(numerator);
+            this.denominator = parseInt(denominator);
+        }
+    /* single-argument invocation */ } else if (typeof denominator === "undefined") {
+        num = numerator; // swap variable names for legibility
+        if (typeof num === "number") {
+            this.numerator = num;
+            this.denominator = 1;
+        } else if (typeof num === "string") {
+            var a, b; // hold the first and second part of the fraction, e.g. a = '1' and b = '2/3' in 1 2/3
+            // or a = '2/3' and b = undefined if we are just passed a single-part number
+            var arr = num.split(" ");
+            if (arr[0]) a = arr[0];
+            if (arr[1]) b = arr[1];
+            /* compound fraction e.g. 'A B/C' */ //  if a is an integer ...
+            if (a % 1 === 0 && b && b.match("/")) return new Fraction(a).add(new Fraction(b));
+            else if (a && !b) {
+                /* simple fraction e.g. 'A/B' */ if (typeof a === "string" && a.match("/")) {
+                    // it's not a whole number... it's actually a fraction without a whole part written
+                    var f = a.split("/");
+                    this.numerator = f[0];
+                    this.denominator = f[1];
+                /* string floating point */ } else if (typeof a === "string" && a.match(".")) return new Fraction(parseFloat(a));
+                else {
+                    this.numerator = parseInt(a);
+                    this.denominator = 1;
+                }
+            } else return undefined; // could not parse
+        }
+    }
+    this.normalize();
+};
+Fraction.prototype.clone = function() {
+    return new Fraction(this.numerator, this.denominator);
+};
+/* pretty-printer, converts fractions into whole numbers and fractions */ Fraction.prototype.toString = function() {
+    if (this.denominator === "NaN") return "NaN";
+    var wholepart = this.numerator / this.denominator > 0 ? Math.floor(this.numerator / this.denominator) : Math.ceil(this.numerator / this.denominator);
+    var numerator = this.numerator % this.denominator;
+    var denominator = this.denominator;
+    var result = [];
+    if (wholepart != 0) result.push(wholepart);
+    if (numerator != 0) result.push((wholepart === 0 ? numerator : Math.abs(numerator)) + "/" + denominator);
+    return result.length > 0 ? result.join(" ") : 0;
+};
+/* destructively rescale the fraction by some integral factor */ Fraction.prototype.rescale = function(factor) {
+    this.numerator *= factor;
+    this.denominator *= factor;
+    return this;
+};
+Fraction.prototype.add = function(b) {
+    var a = this.clone();
+    if (b instanceof Fraction) b = b.clone();
+    else b = new Fraction(b);
+    td = a.denominator;
+    a.rescale(b.denominator);
+    b.rescale(td);
+    a.numerator += b.numerator;
+    return a.normalize();
+};
+Fraction.prototype.subtract = function(b) {
+    var a = this.clone();
+    if (b instanceof Fraction) b = b.clone(); // we scale our argument destructively, so clone
+    else b = new Fraction(b);
+    td = a.denominator;
+    a.rescale(b.denominator);
+    b.rescale(td);
+    a.numerator -= b.numerator;
+    return a.normalize();
+};
+Fraction.prototype.multiply = function(b) {
+    var a = this.clone();
+    if (b instanceof Fraction) {
+        a.numerator *= b.numerator;
+        a.denominator *= b.denominator;
+    } else if (typeof b === "number") a.numerator *= b;
+    else return a.multiply(new Fraction(b));
+    return a.normalize();
+};
+Fraction.prototype.divide = function(b) {
+    var a = this.clone();
+    if (b instanceof Fraction) {
+        a.numerator *= b.denominator;
+        a.denominator *= b.numerator;
+    } else if (typeof b === "number") a.denominator *= b;
+    else return a.divide(new Fraction(b));
+    return a.normalize();
+};
+Fraction.prototype.equals = function(b) {
+    if (!(b instanceof Fraction)) b = new Fraction(b);
+    // fractions that are equal should have equal normalized forms
+    var a = this.clone().normalize();
+    var b = b.clone().normalize();
+    return a.numerator === b.numerator && a.denominator === b.denominator;
+};
+/* Utility functions */ /* Destructively normalize the fraction to its smallest representation. 
+ * e.g. 4/16 -> 1/4, 14/28 -> 1/2, etc.
+ * This is called after all math ops.
+ */ Fraction.prototype.normalize = function() {
+    var isFloat = function(n) {
+        return typeof n === "number" && (n > 0 && n % 1 > 0 && n % 1 < 1 || n < 0 && n % -1 < 0 && n % -1 > -1);
+    };
+    var roundToPlaces = function(n, places) {
+        if (!places) return Math.round(n);
+        else {
+            var scalar = Math.pow(10, places);
+            return Math.round(n * scalar) / scalar;
+        }
+    };
+    return function() {
+        // XXX hackish.  Is there a better way to address this issue?
+        //
+        /* first check if we have decimals, and if we do eliminate them
+         * multiply by the 10 ^ number of decimal places in the number
+         * round the number to nine decimal places
+         * to avoid js floating point funnies
+         */ if (isFloat(this.denominator)) {
+            var rounded = roundToPlaces(this.denominator, 9);
+            var scaleup = Math.pow(10, rounded.toString().split(".")[1].length);
+            this.denominator = Math.round(this.denominator * scaleup); // this !!! should be a whole number
+            //this.numerator *= scaleup;
+            this.numerator *= scaleup;
+        }
+        if (isFloat(this.numerator)) {
+            var rounded = roundToPlaces(this.numerator, 9);
+            var scaleup = Math.pow(10, rounded.toString().split(".")[1].length);
+            this.numerator = Math.round(this.numerator * scaleup); // this !!! should be a whole number
+            //this.numerator *= scaleup;
+            this.denominator *= scaleup;
+        }
+        var gcf = Fraction.gcf(this.numerator, this.denominator);
+        this.numerator /= gcf;
+        this.denominator /= gcf;
+        if (this.numerator < 0 && this.denominator < 0 || this.numerator > 0 && this.denominator < 0) {
+            this.numerator *= -1;
+            this.denominator *= -1;
+        }
+        return this;
+    };
+}();
+/* Takes two numbers and returns their greatest common factor.
+ */ Fraction.gcf = function(a, b) {
+    var common_factors = [];
+    var fa = Fraction.primeFactors(a);
+    var fb = Fraction.primeFactors(b);
+    // for each factor in fa
+    // if it's also in fb
+    // put it into the common factors
+    fa.forEach(function(factor) {
+        var i = fb.indexOf(factor);
+        if (i >= 0) {
+            common_factors.push(factor);
+            fb.splice(i, 1); // remove from fb
+        }
+    });
+    if (common_factors.length === 0) return 1;
+    var gcf = function() {
+        var r = common_factors[0];
+        var i;
+        for(i = 1; i < common_factors.length; i++)r = r * common_factors[i];
+        return r;
+    }();
+    return gcf;
+};
+// Adapted from: 
+// http://www.btinternet.com/~se16/js/factor.htm
+Fraction.primeFactors = function(n) {
+    var num1 = Math.abs(n);
+    var factors = [];
+    var _factor = 2; // first potential prime factor
+    while(_factor * _factor <= num1)if (num1 % _factor === 0) {
+        factors.push(_factor); // so keep it
+        num1 = num1 / _factor; // and divide our search point by it
+    } else _factor++; // and increment
+    if (num1 != 1) factors.push(num1); //    so it too should be recorded
+    return factors; // Return the prime factors
+};
+module.exports.Fraction = Fraction;
 
 },{}],"dXNgZ":[function(require,module,exports) {
 /**
@@ -2463,418 +2975,28 @@ try {
     else Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"l60JC":[function(require,module,exports) {
+},{}],"9OQAM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _iconsSvg = require("url:../../img/icons.svg");
-var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
-var _fractional = require("fractional");
-class RecipeView {
-    #parentElement = document.querySelector(".recipe");
-    #data;
-    render(data) {
-        this.data = data;
-        console.log(this.data);
-        const markup = this._generateMarkup();
-        this.#clear();
-        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+class SearchView {
+    #parentEl = document.querySelector(".search");
+    getQuery() {
+        const query = this.#parentEl.querySelector(".search__field").value;
+        this.#clearInput();
+        return query;
     }
-    #clear() {
-        this.#parentElement.innerHTML = "";
+    #clearInput() {
+        return this.#parentEl.querySelector(".search__field").value = "";
     }
-    renderSpinner = function() {
-        const markup = `
-        <div class="spinner">
-      <svg>
-        <use href="${(0, _iconsSvgDefault.default)}#icon-loader"></use>
-      </svg>
-      </div> 
-      `;
-        this.#parentElement.innerHTML = "";
-        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
-    };
-    _generateMarkup() {
-        return `
-        <figure class="recipe__fig">
-                  <img src="${this.data.image}" alt="${this.data.title}" class="recipe__img" />
-                  <h1 class="recipe__title">
-                    <span>${this.data.title}</span>
-                  </h1>
-                </figure>
-        
-                <div class="recipe__details">
-                  <div class="recipe__info">
-                    <svg class="recipe__info-icon">
-                      <use href="${0, _iconsSvgDefault.default}#icon-clock"></use>
-                    </svg>
-                    <span class="recipe__info-data recipe__info-data--minutes">${this.data.cookingTime}</span>
-                    <span class="recipe__info-text">minutes</span>
-                  </div>
-                  <div class="recipe__info">
-                    <svg class="recipe__info-icon">
-                      <use href="${0, _iconsSvgDefault.default}#icon-users"></use>
-                    </svg>
-                    <span class="recipe__info-data recipe__info-data--people">${this.data.servings}</span>
-                    <span class="recipe__info-text">servings</span>
-        
-                    <div class="recipe__info-buttons">
-                      <button class="btn--tiny btn--increase-servings">
-                        <svg>
-                          <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
-                        </svg>
-                      </button>
-                      <button class="btn--tiny btn--increase-servings">
-                        <svg>
-                          <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-        
-                  <div class="recipe__user-generated">
-                    <svg>
-                      <use href="${0, _iconsSvgDefault.default}#icon-user"></use>
-                    </svg>
-                  </div>
-                  <button class="btn--round">
-                    <svg class="">
-                      <use href="${0, _iconsSvgDefault.default}#icon-bookmark-fill"></use>
-                    </svg>
-                  </button>
-                </div>
-        
-                <div class="recipe__ingredients">
-                  <h2 class="heading--2">Recipe ingredients</h2>
-                  <ul class="recipe__ingredient-list">
-                  ${this.data.ingredients.map(this.#geranteMarkupIngredient).join("")}
-                      </ul>
-                </div>
-        
-                <div class="recipe__directions">
-                  <h2 class="heading--2">How to cook it</h2>
-                  <p class="recipe__directions-text">
-                    This recipe was carefully designed and tested by
-                    <span class="recipe__publisher">${this.data.publisher}</span>. Please check out
-                    directions at their website.
-                  </p>
-                  <a
-                    class="btn--small recipe__btn"
-                    href="${this.data.sourceUrl}"
-                    target="_blank"
-                  >
-                    <span>Directions</span>
-                    <svg class="search__icon">
-                      <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
-                    </svg>
-                  </a>
-                </div>`;
-    }
-    #geranteMarkupIngredient(ing) {
-        return `
-              <li class="recipe__ingredient">
-                   <svg class="recipe__icon">
-                    <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
-                    </svg>
-                     <div class="recipe__quantity">${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ""}</div>
-                     <div class="recipe__description">
-                      <span class="recipe__unit">${ing.unit}</span>
-                       ${ing.description}
-                      </div>
-                    </li> `;
+    addHandlerSearch(handler) {
+        this.#parentEl.addEventListener("submit", function(e) {
+            e.preventDefault();
+            handler();
+        });
     }
 }
-exports.default = new RecipeView();
+exports.default = new SearchView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../../img/icons.svg":"loVOp","fractional":"3SU56"}],"loVOp":[function(require,module,exports) {
-module.exports = require("2f11d7981c489519").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
-
-},{"2f11d7981c489519":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"3SU56":[function(require,module,exports) {
-/*
-fraction.js
-A Javascript fraction library.
-
-Copyright (c) 2009  Erik Garrison <erik@hypervolu.me>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-*/ /* Fractions */ /* 
- *
- * Fraction objects are comprised of a numerator and a denomenator.  These
- * values can be accessed at fraction.numerator and fraction.denomenator.
- *
- * Fractions are always returned and stored in lowest-form normalized format.
- * This is accomplished via Fraction.normalize.
- *
- * The following mathematical operations on fractions are supported:
- *
- * Fraction.equals
- * Fraction.add
- * Fraction.subtract
- * Fraction.multiply
- * Fraction.divide
- *
- * These operations accept both numbers and fraction objects.  (Best results
- * are guaranteed when the input is a fraction object.)  They all return a new
- * Fraction object.
- *
- * Usage:
- *
- * TODO
- *
- */ /*
- * The Fraction constructor takes one of:
- *   an explicit numerator (integer) and denominator (integer),
- *   a string representation of the fraction (string),
- *   or a floating-point number (float)
- *
- * These initialization methods are provided for convenience.  Because of
- * rounding issues the best results will be given when the fraction is
- * constructed from an explicit integer numerator and denomenator, and not a
- * decimal number.
- *
- *
- * e.g. new Fraction(1, 2) --> 1/2
- *      new Fraction('1/2') --> 1/2
- *      new Fraction('2 3/4') --> 11/4  (prints as 2 3/4)
- *
- */ Fraction = function(numerator, denominator) {
-    /* double argument invocation */ if (typeof numerator !== "undefined" && denominator) {
-        if (typeof numerator === "number" && typeof denominator === "number") {
-            this.numerator = numerator;
-            this.denominator = denominator;
-        } else if (typeof numerator === "string" && typeof denominator === "string") {
-            // what are they?
-            // hmm....
-            // assume they are ints?
-            this.numerator = parseInt(numerator);
-            this.denominator = parseInt(denominator);
-        }
-    /* single-argument invocation */ } else if (typeof denominator === "undefined") {
-        num = numerator; // swap variable names for legibility
-        if (typeof num === "number") {
-            this.numerator = num;
-            this.denominator = 1;
-        } else if (typeof num === "string") {
-            var a, b; // hold the first and second part of the fraction, e.g. a = '1' and b = '2/3' in 1 2/3
-            // or a = '2/3' and b = undefined if we are just passed a single-part number
-            var arr = num.split(" ");
-            if (arr[0]) a = arr[0];
-            if (arr[1]) b = arr[1];
-            /* compound fraction e.g. 'A B/C' */ //  if a is an integer ...
-            if (a % 1 === 0 && b && b.match("/")) return new Fraction(a).add(new Fraction(b));
-            else if (a && !b) {
-                /* simple fraction e.g. 'A/B' */ if (typeof a === "string" && a.match("/")) {
-                    // it's not a whole number... it's actually a fraction without a whole part written
-                    var f = a.split("/");
-                    this.numerator = f[0];
-                    this.denominator = f[1];
-                /* string floating point */ } else if (typeof a === "string" && a.match(".")) return new Fraction(parseFloat(a));
-                else {
-                    this.numerator = parseInt(a);
-                    this.denominator = 1;
-                }
-            } else return undefined; // could not parse
-        }
-    }
-    this.normalize();
-};
-Fraction.prototype.clone = function() {
-    return new Fraction(this.numerator, this.denominator);
-};
-/* pretty-printer, converts fractions into whole numbers and fractions */ Fraction.prototype.toString = function() {
-    if (this.denominator === "NaN") return "NaN";
-    var wholepart = this.numerator / this.denominator > 0 ? Math.floor(this.numerator / this.denominator) : Math.ceil(this.numerator / this.denominator);
-    var numerator = this.numerator % this.denominator;
-    var denominator = this.denominator;
-    var result = [];
-    if (wholepart != 0) result.push(wholepart);
-    if (numerator != 0) result.push((wholepart === 0 ? numerator : Math.abs(numerator)) + "/" + denominator);
-    return result.length > 0 ? result.join(" ") : 0;
-};
-/* destructively rescale the fraction by some integral factor */ Fraction.prototype.rescale = function(factor) {
-    this.numerator *= factor;
-    this.denominator *= factor;
-    return this;
-};
-Fraction.prototype.add = function(b) {
-    var a = this.clone();
-    if (b instanceof Fraction) b = b.clone();
-    else b = new Fraction(b);
-    td = a.denominator;
-    a.rescale(b.denominator);
-    b.rescale(td);
-    a.numerator += b.numerator;
-    return a.normalize();
-};
-Fraction.prototype.subtract = function(b) {
-    var a = this.clone();
-    if (b instanceof Fraction) b = b.clone(); // we scale our argument destructively, so clone
-    else b = new Fraction(b);
-    td = a.denominator;
-    a.rescale(b.denominator);
-    b.rescale(td);
-    a.numerator -= b.numerator;
-    return a.normalize();
-};
-Fraction.prototype.multiply = function(b) {
-    var a = this.clone();
-    if (b instanceof Fraction) {
-        a.numerator *= b.numerator;
-        a.denominator *= b.denominator;
-    } else if (typeof b === "number") a.numerator *= b;
-    else return a.multiply(new Fraction(b));
-    return a.normalize();
-};
-Fraction.prototype.divide = function(b) {
-    var a = this.clone();
-    if (b instanceof Fraction) {
-        a.numerator *= b.denominator;
-        a.denominator *= b.numerator;
-    } else if (typeof b === "number") a.denominator *= b;
-    else return a.divide(new Fraction(b));
-    return a.normalize();
-};
-Fraction.prototype.equals = function(b) {
-    if (!(b instanceof Fraction)) b = new Fraction(b);
-    // fractions that are equal should have equal normalized forms
-    var a = this.clone().normalize();
-    var b = b.clone().normalize();
-    return a.numerator === b.numerator && a.denominator === b.denominator;
-};
-/* Utility functions */ /* Destructively normalize the fraction to its smallest representation. 
- * e.g. 4/16 -> 1/4, 14/28 -> 1/2, etc.
- * This is called after all math ops.
- */ Fraction.prototype.normalize = function() {
-    var isFloat = function(n) {
-        return typeof n === "number" && (n > 0 && n % 1 > 0 && n % 1 < 1 || n < 0 && n % -1 < 0 && n % -1 > -1);
-    };
-    var roundToPlaces = function(n, places) {
-        if (!places) return Math.round(n);
-        else {
-            var scalar = Math.pow(10, places);
-            return Math.round(n * scalar) / scalar;
-        }
-    };
-    return function() {
-        // XXX hackish.  Is there a better way to address this issue?
-        //
-        /* first check if we have decimals, and if we do eliminate them
-         * multiply by the 10 ^ number of decimal places in the number
-         * round the number to nine decimal places
-         * to avoid js floating point funnies
-         */ if (isFloat(this.denominator)) {
-            var rounded = roundToPlaces(this.denominator, 9);
-            var scaleup = Math.pow(10, rounded.toString().split(".")[1].length);
-            this.denominator = Math.round(this.denominator * scaleup); // this !!! should be a whole number
-            //this.numerator *= scaleup;
-            this.numerator *= scaleup;
-        }
-        if (isFloat(this.numerator)) {
-            var rounded = roundToPlaces(this.numerator, 9);
-            var scaleup = Math.pow(10, rounded.toString().split(".")[1].length);
-            this.numerator = Math.round(this.numerator * scaleup); // this !!! should be a whole number
-            //this.numerator *= scaleup;
-            this.denominator *= scaleup;
-        }
-        var gcf = Fraction.gcf(this.numerator, this.denominator);
-        this.numerator /= gcf;
-        this.denominator /= gcf;
-        if (this.numerator < 0 && this.denominator < 0 || this.numerator > 0 && this.denominator < 0) {
-            this.numerator *= -1;
-            this.denominator *= -1;
-        }
-        return this;
-    };
-}();
-/* Takes two numbers and returns their greatest common factor.
- */ Fraction.gcf = function(a, b) {
-    var common_factors = [];
-    var fa = Fraction.primeFactors(a);
-    var fb = Fraction.primeFactors(b);
-    // for each factor in fa
-    // if it's also in fb
-    // put it into the common factors
-    fa.forEach(function(factor) {
-        var i = fb.indexOf(factor);
-        if (i >= 0) {
-            common_factors.push(factor);
-            fb.splice(i, 1); // remove from fb
-        }
-    });
-    if (common_factors.length === 0) return 1;
-    var gcf = function() {
-        var r = common_factors[0];
-        var i;
-        for(i = 1; i < common_factors.length; i++)r = r * common_factors[i];
-        return r;
-    }();
-    return gcf;
-};
-// Adapted from: 
-// http://www.btinternet.com/~se16/js/factor.htm
-Fraction.primeFactors = function(n) {
-    var num1 = Math.abs(n);
-    var factors = [];
-    var _factor = 2; // first potential prime factor
-    while(_factor * _factor <= num1)if (num1 % _factor === 0) {
-        factors.push(_factor); // so keep it
-        num1 = num1 / _factor; // and divide our search point by it
-    } else _factor++; // and increment
-    if (num1 != 1) factors.push(num1); //    so it too should be recorded
-    return factors; // Return the prime factors
-};
-module.exports.Fraction = Fraction;
-
-},{}]},["fA0o9","aenu9"], "aenu9", "parcelRequire3a11")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map
