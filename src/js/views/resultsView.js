@@ -1,4 +1,5 @@
 import View from "./View";
+import previewView from "./previewView";
 import icons from 'url:../../img/icons.svg'
 
 class ResultView extends View {
@@ -7,25 +8,7 @@ class ResultView extends View {
     _message = '';
 
     _generateMarkup() {
-        return this._data.map(this._generateMarkupview).join('')
-    }
-
-    _generateMarkupview(result) {
-        return `
-        <li class="preview">
-            <a class="preview__link " href="#${result.id}">
-            <figure class="preview__fig">
-                <img src="${result.image}" alt="${result.title}" />
-            </figure>
-            <div class="preview__data">
-                <h4 class="preview__title">${result.title}</h4>
-                <p class="preview__publisher">${result.publisher}</p>
-                
-            </div>
-            </a>
-      </li>
-        `;
-
+        return this._data.map(result => previewView.render(result, false)).join('')
     }
 }
 
