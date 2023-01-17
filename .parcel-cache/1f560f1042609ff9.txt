@@ -1,4 +1,4 @@
-7797
+7801
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-postcss133179807886919530 1
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\string\virtual\pad-start.js133179891059036603 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\css-tree\lib\utils\clone.js133179807888575103 0
@@ -14,7 +14,7 @@
 65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\escalade133179803857939625 1
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\function\name.js133179891055926973 0
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\msgpackr\pack.js133179803861859154 0
-48C:\Users\ashutec\Desktop\New folder\forkify\dist133183279445207436 1
+48C:\Users\ashutec\Desktop\New folder\forkify\dist133183474203888314 1
 99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\proposals\object-values-entries.js133179891056782341 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\opus.js133179803887035523 0
 81C:\Users\ashutec\Desktop\New folder\forkify\node_modules\postcss-value-parser\lib133179807886410893 1
@@ -62,21 +62,21 @@
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\date\to-gmt-string.js133179891074737157 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\reflect\get-metadata-keys.js133179891035867232 0
 79C:\Users\ashutec\Desktop\New folder\forkify\node_modules\picomatch\CHANGELOG.md133179803859545334 0
-54C:\Users\ashutec\Desktop\New folder\forkify\index.html133180581616904413 0
+54C:\Users\ashutec\Desktop\New folder\forkify\index.html133183471023826254 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\reflect\get.js133179891037416556 0
 81C:\Users\ashutec\Desktop\New folder\forkify\node_modules\to-regex-range\README.md133179803854199625 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\lib\replace\index.js133179807890769241 0
-56C:\Users\ashutec\Desktop\New folder\forkify\node_modules133180555963543525 1
+56C:\Users\ashutec\Desktop\New folder\forkify\node_modules133183473244401313 1
 75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\micromatch\LICENSE133179803850679033 0
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\binding.gyp133179803874086470 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\string\replace-all.js133179891063083248 0
-61C:\Users\ashutec\Desktop\New folder\forkify\package-lock.json133180556230646834 0
+61C:\Users\ashutec\Desktop\New folder\forkify\package-lock.json133183473878293708 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\cosmiconfig\dist\readFile.js.map133179807889991319 0
 64C:\Users\ashutec\Desktop\New folder\forkify\node_modules\globals133179807885293892 1
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\symbol\unscopables.js133179891082036787 0
 105C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\object\get-own-property-descriptor.js133179891036016839 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\addClassesToSVGElement.js133179807886600381 0
-56C:\Users\ashutec\Desktop\New folder\forkify\package.json133179972236191387 0
+56C:\Users\ashutec\Desktop\New folder\forkify\package.json133183473257413332 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\commander\package-support.json133179807883728058 0
 74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\type-fest\license133179807881424222 0
 71C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\schema.js133179807890749292 0
@@ -94,7 +94,7 @@
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\nullthrows\nullthrows.js.flow133179803855256798 0
 75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@lezer\common\dist133179803859585232 1
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\immutable\dist\immutable.es.js133179807207065882 0
-59C:\Users\ashutec\Desktop\New folder\forkify\src\js\model.js133183269052943551 0
+59C:\Users\ashutec\Desktop\New folder\forkify\src\js\model.js133183446208902505 0
 50C:\Users\ashutec\Desktop\New folder\forkify\src\js133180555965843339 1
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\regions\CO.js133179803874385668 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\htmlnano\lib\presets\max.js133179807887886943 0
@@ -110,7 +110,7 @@
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\ordered-binary\package.json133179803857839896 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\removeScriptElement.js133179807891587055 0
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\math\log2.js133179891053333694 0
-64C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\View.js133183267799092667 0
+64C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\View.js133183444834874121 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\function\virtual133179891044938140 1
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\packager-html\src133179807883468757 1
 65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\boolbase133179807882920222 1
@@ -133,7 +133,7 @@
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\filter-reject.js133179891029085728 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\http3.js133179803881855704 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\error\index.js133179891042350289 0
-64C:\Users\ashutec\Desktop\New folder\forkify\src\js\controller.js133183279444549200 0
+64C:\Users\ashutec\Desktop\New folder\forkify\src\js\controller.js133183412541087866 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\convertEllipseToCircle.js133179807888774575 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\typed-array\join.js133179891051596723 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\subarray.js133179891071606819 0
@@ -159,7 +159,7 @@
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\word-break.js133179803891049026 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\string\trim-right.js133179891080353126 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\wake-lock.js133179803890739856 0
-70C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\recipeView.js133183215705786530 0
+70C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\recipeView.js133183428547651297 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\reflect\metadata.js133179891055697586 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\parcel\src\.eslintrc.json133179807885702785 0
 108C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\source-map\parcel_sourcemap_node\Cargo.toml133179803873757347 0
@@ -180,7 +180,7 @@
 63C:\Users\ashutec\Desktop\New folder\forkify\src\img\favicon.png133179784706874943 0
 85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\cleanupAttrs.js133179807886909554 0
 78C:\Users\ashutec\Desktop\New folder\forkify\node_modules\mdn-data\package.json133179807887876972 0
-60C:\Users\ashutec\Desktop\New folder\forkify\src\js\config.js133180604709890076 0
+60C:\Users\ashutec\Desktop\New folder\forkify\src\js\config.js133183404182657537 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\removeOffCanvasPaths.js133179807891547162 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\string\ends-with.js133179891016626306 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\advance-string-index.js133179891005244368 0
@@ -200,17 +200,25 @@
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\utility-types\SECURITY.md133179803861370462 0
 110C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\array-method-has-species-support.js133179891006778888 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\regexp\sticky.js133179891070330187 0
-61C:\Users\ashutec\Desktop\New folder\forkify\src\js\helpers.js133180555965843339 0
+61C:\Users\ashutec\Desktop\New folder\forkify\src\js\helpers.js133183414778287475 0
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\postcss-value-parser\lib\index.js133179807882680862 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\dom-exception\index.js133179891043038450 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\group.js133179891038889552 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\cleanupListOfValues.js133179807887587755 0
 83C:\Users\ashutec\Desktop\New folder\forkify\node_modules\term-size\vendor\.DS_Store133179807881523952 0
-56C:\Users\ashutec\Desktop\New folder\forkify\src\js\views133183244244911680 1
+56C:\Users\ashutec\Desktop\New folder\forkify\src\js\views133183326403210334 1
 74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\browser\dist133179807891477351 1
 77C:\Users\ashutec\Desktop\New folder\forkify\node_modules\escape-string-regexp133179807883588435 1
 94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\array-from-async.js133179891006509609 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\array\virtual\keys.js133179891052675453 0
+104C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\fieldset-disabled.js133179803880549195 0
+74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\package.json133179807892135587 0
+88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\url\to-json.js133179891075375453 0
+116C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@swc\helpers\lib\_class_static_private_field_destructure.js133179807890400226 0
+73C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\addRecipeView.js133183405231457455 0
+84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\keys.js133179891052635564 0
+76C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\parse-cst.d.ts133179807891616972 0
+94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\esnext.math.fscale.js133179891025116792 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\domutils\lib\stringify.d.ts.map133179807888216070 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\regions\GT.js133179803881436823 0
 66C:\Users\ashutec\Desktop\New folder\forkify\node_modules\callsites133179807884107047 1
@@ -254,7 +262,7 @@
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\parse-float.js133179891059495371 0
 60C:\Users\ashutec\Desktop\New folder\forkify\src\img\logo.png133179784706901470 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\typed-array\subarray.js133179891071536955 0
-71C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\previewView.js133183252829322096 0
+71C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\previewView.js133183430651921746 0
 77C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\lib\restructure133179807891956066 1
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\type-fest\source\conditional-pick.d.ts133179807887198784 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\symbol\match-all.js133179891054550441 0
@@ -275,16 +283,12 @@
 62C:\Users\ashutec\Desktop\New folder\forkify\node_modules\chalk133179803857401072 1
 101C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\string\virtual\replace-all.js133179891063163031 0
 70C:\Users\ashutec\Desktop\New folder\forkify\src\js\views\searchView.js133180565797079278 0
-85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\htmlnano\docs\versioned_docs133179807891467377 1
-75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\chrome-trace-event133179803857361175 1
-98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\instance\reduce-right.js133179891061284440 0
-65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\chokidar133179807206637030 1
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\find-index.js133179891030446700 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\set-prototype-of.js133179891065838070 0
 94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\symbol\has-instance.js133179891039039144 0
 61C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.bin133179807900738382 1
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\promise\any.js133179891005872689 0
-75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.package-lock.json133180556230899862 0
+75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.package-lock.json133183473878582637 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\async-iterator\map.js133179891054370923 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.small.js133179891021342718 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.typed-array.int32-array.js133179891022350027 0
@@ -397,6 +401,10 @@
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\msgpackr\rollup.config.js133179803862198243 0
 81C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\array\sort.js133179891068375407 0
 65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\anymatch133179807205928925 1
+98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\instance\reduce-right.js133179891061284440 0
+85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\htmlnano\docs\versioned_docs133179807891467377 1
+75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\chrome-trace-event133179803857361175 1
+65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\chokidar133179807206637030 1
 81C:\Users\ashutec\Desktop\New folder\forkify\node_modules\supports-color\readme.md133179803855167046 0
 62C:\Users\ashutec\Desktop\New folder\forkify\node_modules\clone133179803856284055 1
 70C:\Users\ashutec\Desktop\New folder\forkify\node_modules\color-convert133179803857151739 1
@@ -498,6 +506,13 @@
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\normalize-path\package.json133179807205659645 0
 99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\htmlnano\docs\versioned_docs\version-1.1.1133179807892045825 1
 67C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fill-range133179803853770773 1
+96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\css-tree\lib\syntax\pseudo\nth-child.js133179807893412178 0
+97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\object\lookup-setter.js133179891053473323 0
+94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\reflect\to-string-tag.js133179891078268456 0
+65C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fraction133183473256775054 1
+82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@lezer\lr\dist\token.d.ts133179803860403044 0
+86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\typed-array\set.js133179891066156858 0
+74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\is-glob\README.md133179803854239520 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\svgo\plugins\removeEmptyAttrs.js133179807891417504 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\array\virtual\push.js133179891060546512 0
 67C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fractional133179972235217357 1
@@ -507,7 +522,6 @@
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\string\iterator.js133179891051237686 0
 146C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\.pnpm\source-pnpm@1.0.0\node_modules133179807888924170 1
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\every.js133179891027884326 0
-67C:\Users\ashutec\Desktop\New folder\forkify\dist\icons.dfd7a6db.svg133183276873709542 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\array\virtual\at.js133179891008786040 0
 71C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable133179891086479467 1
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\source-map\lib\mapping-list.js133179807886550522 0
@@ -843,8 +857,6 @@
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\get-own-property-names.js133179891036425740 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\regions\AR.js133179803865728807 0
 69C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\pair.js133179807888575103 0
-76C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\parse-cst.d.ts133179807891616972 0
-94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\esnext.math.fscale.js133179891025116792 0
 116C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\object-get-own-property-names-external.js133179891056486117 0
 138C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-browser\package.json133179807893481992 0
 74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\yaml\parse-cst.js133179807889542523 0
@@ -1107,8 +1119,8 @@
 115C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\intro.doc133179803873926892 0
 71C:\Users\ashutec\Desktop\New folder\forkify\node_modules\sass\README.md133179807207604449 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\math\fscale.js133179891035468302 0
-91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\parse-int.js133179891059703264 0
 81C:\Users\ashutec\Desktop\New folder\forkify\node_modules\is-binary-path\readme.md133179807205928925 0
+91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\parse-int.js133179891059703264 0
 76C:\Users\ashutec\Desktop\New folder\forkify\node_modules\weak-lru-cache\dist133179803850609220 1
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\hash\parcel-hash.darwin-x64.node133179803862317936 0
 74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\sass\types\logger133179807208681568 1
@@ -1254,6 +1266,7 @@
 99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\terser\node_modules\commander\CHANGELOG.md133179807883867698 0
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\type-fest\source133179807891168174 1
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\type-fest\source\set-optional.d.ts133179807890499963 0
+66C:\Users\ashutec\Desktop\New folder\forkify\dist\logo.8a7af738.png133183474203818904 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fractional\releases\fraction-0.2.js133179972235630367 0
 71C:\Users\ashutec\Desktop\New folder\forkify\node_modules\type-fest\ts41133179807890749292 1
 74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\node_modules133179803837404519 1
@@ -1769,6 +1782,8 @@
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@swc\helpers\lib133179807893462041 1
 80C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\weak-map133179891045337070 1
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\source-map-js\lib\mapping-list.js133179807206108443 0
+111C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-arm64-gnu.node133179807897049145 0
+74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fraction\index.js133183473256794997 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\array\virtual\join.js133179891051616667 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\source-map-js\lib\quick-sort.js133179807206138361 0
 85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\packager-css\LICENSE133179807881464111 0
@@ -1971,6 +1986,7 @@
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\set\index.js133179891044424741 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array\group-to-map.js133179891038580378 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\proposals\map-update-or-insert.js133179891053593004 0
+66C:\Users\ashutec\Desktop\New folder\forkify\dist\index.56023c43.js133183474203818904 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\typed-array\copy-within.js133179891013783662 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\virtual\join.js133179891051716395 0
 105C:\Users\ashutec\Desktop\New folder\forkify\node_modules\htmlnano\lib\modules\normalizeAttributeValues.js133179807889243318 0
@@ -2093,7 +2109,6 @@
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\postcss-value-parser\lib\unit.js133179807884775262 0
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\is-template-object.js133179891048268002 0
 75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\picomatch\index.js133179803853202289 0
-96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\to-exponential.js133179891074258443 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@babel\highlight\node_modules\chalk133179807885513293 1
 70C:\Users\ashutec\Desktop\New folder\forkify\node_modules\picomatch\lib133179803857660380 1
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\symbol\unscopables.js133179891082056736 0
@@ -2489,12 +2504,12 @@
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\typed-array\subarray.js133179891071546924 0
 99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\node_modules\node-addon-api\nothing.c133179803850559364 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\internal-state.js133179891046283631 0
-88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\regions\ZM.js133179803891158734 0
-99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\node_modules\node-addon-api\README.md133179803863993452 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\utils\src\schema.js133179803871363746 0
 108C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\get-own-property-descriptors.js133179891036345970 0
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\use-strict.js133179803890495381 0
 103C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mdb.c133179803870426254 0
+88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\regions\ZM.js133179803891158734 0
+99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\node_modules\node-addon-api\README.md133179803863993452 0
 109C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\node_modules\node-addon-api\tools\check-napi.js133179803861041337 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\lookup-setter.js133179891053483293 0
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features133179891081548095 1
@@ -2555,11 +2570,11 @@
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array\slice.js133179891066904860 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\string\trim-left.js133179891079884376 0
 113C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mtest.c133179803871303905 0
+120C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\sample-mdb.txt133179803877038578 0
 105C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\package-manager\test\fixtures\packages\a133179803868481462 1
+92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\instance\repeat.js133179891062504788 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\css-what\lib\es\stringify.d.ts133179807889552489 0
 112C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\sample-bdb.txt133179803877008657 0
-92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\instance\repeat.js133179891062504788 0
-120C:\Users\ashutec\Desktop\New folder\forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\sample-mdb.txt133179803877038578 0
 107C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\workers\test\integration\workerfarm\ipc.js133179803863564593 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\json-parse-even-better-errors\index.js133179807881404271 0
 85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\date\to-json.js133179891075385431 0
@@ -2737,12 +2752,6 @@
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\canvas-text.js133179803873208809 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\cosmiconfig\dist\cacheWrapper.js.map133179807887617663 0
 77C:\Users\ashutec\Desktop\New folder\forkify\node_modules\is-glob\package.json133179803852992852 0
-96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\css-tree\lib\syntax\pseudo\nth-child.js133179807893412178 0
-97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\object\lookup-setter.js133179891053473323 0
-94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\reflect\to-string-tag.js133179891078268456 0
-82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@lezer\lr\dist\token.d.ts133179803860403044 0
-86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\es\typed-array\set.js133179891066156858 0
-74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\is-glob\README.md133179803854239520 0
 76C:\Users\ashutec\Desktop\New folder\forkify\node_modules\is-extglob\index.js133179803853980213 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@mischnic\json-sourcemap\LICENSE133179803850738876 0
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\sni.js133179803889199734 0
@@ -2990,6 +2999,10 @@
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\dotenv-expand\lib\main.js133179803856543370 0
 106C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.typed-array.find-last-index.js133179891022230357 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\internals\weak-map-basic-detection.js133179891084005751 0
+78C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fraction\package.json133183473256685302 0
+91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\lib\RequestTracker.js133179803876390309 0
+95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\index-of.js133179891041273165 0
+75C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fraction\README.md133183473256755108 0
 78C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\dist\csso.min.js133179807890130944 0
 80C:\Users\ashutec\Desktop\New folder\forkify\node_modules\fill-range\package.json133179803850599248 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\function\virtual133179891041652160 1
@@ -3233,9 +3246,6 @@
 105C:\Users\ashutec\Desktop\New folder\forkify\node_modules\css-select\lib\pseudo-selectors\filters.d.ts.map133179807888724703 0
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\dom-serializer\lib\esm\index.d.ts133179807887986681 0
 72C:\Users\ashutec\Desktop\New folder\forkify\node_modules\detect-libc\lib133179803856802684 1
-104C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\fieldset-disabled.js133179803880549195 0
-74C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\package.json133179807892135587 0
-88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\url\to-json.js133179891075375453 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\array\virtual\index.js133179891042809060 0
 71C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\README.md133179807892255271 0
 73C:\Users\ashutec\Desktop\New folder\forkify\node_modules\csso\lib\replace133179807892035855 1
@@ -3640,8 +3650,6 @@
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\find-last.js133179891031440497 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\esnext.set.find.js133179891025897392 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\from.js133179891035358593 0
-91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\lib\RequestTracker.js133179803876390309 0
-95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\index-of.js133179891041273165 0
 106C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@jridgewell\trace-mapping\dist\types\resolve.d.ts133179807887527904 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\typed-array\index.js133179891045287204 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\weak-set133179891057211486 1
@@ -3799,6 +3807,7 @@
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\iterator\filter.js133179891029938061 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\min-safe-integer.js133179891055867136 0
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\parse-float.js133179891059505342 0
+96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\to-exponential.js133179891074258443 0
 100C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\typed-array\int32-array.js133179891045885764 0
 101C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\reporter-dev-server\src\HMRServer.js133179807885044547 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\stable\number\virtual\index.js133179891045167526 0
@@ -4280,8 +4289,8 @@
 112C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\watcher\prebuilds\linux-x64\node.napi.musl.node133179803871792600 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.substr.js133179891021432483 0
 101C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\array-includes.js133179803866436912 0
-94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.trim-end.js133179891021602018 0
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\instance\replace-all.js133179891062714232 0
+94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.trim-end.js133179891021602018 0
 100C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\features\number\max-safe-integer.js133179891055607793 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.trim-right.js133179891021621968 0
 90C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\modules\es.string.trim.js133179891021641915 0
@@ -4894,6 +4903,7 @@
 93C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\iterator.js133179891051068133 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\methods.js133179891055797320 0
 91C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\reduce.js133179891062145749 0
+67C:\Users\ashutec\Desktop\New folder\forkify\dist\index.987de634.css133183474203818904 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\reverse.js133179891064039408 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\reflect\get-metadata-keys.js133179891035877205 0
 88C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\typed-array\set.js133179891066296484 0
@@ -5034,8 +5044,6 @@
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\typed-array\find-index.js133179891030147505 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\entries.js133179891017124699 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\is.js133179891049155622 0
-116C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@swc\helpers\lib\_class_static_private_field_destructure.js133179807890400226 0
-84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\keys.js133179891052635564 0
 78C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\string133179891080662302 1
 85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\proto.js133179891060386940 0
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\object\seal.js133179891064448419 0
@@ -5175,6 +5183,7 @@
 85C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\concat.js133179891012666652 0
 83C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\fill.js133179891028502661 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\group-by.js133179891038350988 0
+67C:\Users\ashutec\Desktop\New folder\forkify\dist\icons.c14567a0.svg133183474194523019 0
 89C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\filter-out.js133179891028826081 0
 94C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\flexbox.js133179803880708772 0
 83C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\full\array\find.js133179891031759641 0
@@ -6324,7 +6333,6 @@
 101C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\workers\lib\process\ProcessWorker.js133179803865289981 0
 95C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array-buffer\is-view.js133179891048277973 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array\copy-within.js133179891013753740 0
-70C:\Users\ashutec\Desktop\New folder\forkify\dist\index.e37f48ea.js.map133183279445197469 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\css-caret-color.js133179803875871698 0
 86C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array\every.js133179891027275943 0
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\core-js\actual\array\filter.js133179891029299666 0
@@ -6845,7 +6853,6 @@
 78C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\fs\index.d.ts133179803862926296 0
 96C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\mpeg-dash.js133179803885735332 0
 92C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\mpeg4.js133179803885745302 0
-66C:\Users\ashutec\Desktop\New folder\forkify\dist\index.e37f48ea.js133183279445147601 0
 98C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\multicolumn.js133179803885835114 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\mutation-events.js133179803886084403 0
 103C:\Users\ashutec\Desktop\New folder\forkify\node_modules\caniuse-lite\data\features\mutationobserver.js133179803886114315 0
@@ -7003,7 +7010,6 @@
 115C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\optimizer-image\parcel-image.linux-arm64-musl.node133179807893093032 0
 110C:\Users\ashutec\Desktop\New folder\forkify\node_modules\abortcontroller-polyfill\dist\polyfill-patch-fetch.js133179803859086561 0
 102C:\Users\ashutec\Desktop\New folder\forkify\node_modules\abortcontroller-polyfill\dist\umd-polyfill.js133179803860492806 0
-71C:\Users\ashutec\Desktop\New folder\forkify\dist\index.f7626f62.css.map133183276873809270 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@types\parse-json\LICENSE133179807881424222 0
 82C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\packager-html\lib133179807882521290 1
 84C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@types\parse-json\README.md133179807882391635 0
@@ -7288,7 +7294,6 @@
 87C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\LICENSE133179807881454138 0
 97C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\native-browser.js133179807886530570 0
 115C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-arm-gnueabihf.node133179807896553058 0
-111C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-arm64-gnu.node133179807897049145 0
 112C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-arm64-musl.node133179807897946744 0
 120C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\node-resolver-core\test\fixture\packages\source\dist.js133179807889672172 0
 110C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-x64-musl.node133179807899482639 0
@@ -7609,7 +7614,7 @@
 125C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-none\package.json133179803878684180 0
 147C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-no-engines\package.json133179803878654262 0
 99C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\parcel\index.js133179803872390998 0
-59C:\Users\ashutec\Desktop\New folder\forkify\dist\index.html133183260226023087 0
+59C:\Users\ashutec\Desktop\New folder\forkify\dist\index.html133183474203818904 0
 103C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\parcel\package.json133179803878624337 0
 100C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\parcel\yarn.lock133179803878714101 0
 105C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\main-mjs\package.json133179803878614365 0
@@ -7619,7 +7624,6 @@
 127C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-not-file\src\index.js133179803872321228 0
 126C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-missing\package.json133179803878494685 0
 113C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\invalid-distpath\package.json133179803878444817 0
-66C:\Users\ashutec\Desktop\New folder\forkify\dist\logo.726d37a8.png133183276873729485 0
 114C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\duplicate-targets\package.json133179803878434845 0
 121C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-type\package.json133179803878375008 0
 104C:\Users\ashutec\Desktop\New folder\forkify\node_modules\@parcel\core\test\fixtures\context\package.json133179803878355057 0
@@ -7793,6 +7797,6 @@
 66C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.bin\sass133179807217191806 0
 68C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.bin\semver133179803891477876 0
 72C:\Users\ashutec\Desktop\New folder\forkify\node_modules\.bin\semver.ps1133179803891477876 0
-69C:\Users\ashutec\Desktop\New folder\forkify\dist\favicon.8b2f57bf.png133183276873530017 0
-67C:\Users\ashutec\Desktop\New folder\forkify\dist\icons.21bad73c.svg133183276873530017 0
-67C:\Users\ashutec\Desktop\New folder\forkify\dist\index.f7626f62.css133183276873769380 0
+69C:\Users\ashutec\Desktop\New folder\forkify\dist\favicon.76dd299c.png133183474194523019 0
+70C:\Users\ashutec\Desktop\New folder\forkify\dist\index.56023c43.js.map133183474203878353 0
+71C:\Users\ashutec\Desktop\New folder\forkify\dist\index.987de634.css.map133183474203868371 0
